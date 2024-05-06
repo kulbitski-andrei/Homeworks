@@ -1,2 +1,4 @@
 # pymar2024
-Python test automation course
+First Name: Andrei
+Last Name: Kulbitski
+Course Description: Python test automation course 2024
