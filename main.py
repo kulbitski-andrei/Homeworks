@@ -1,4 +1,8 @@
+"""This is a module docstring!"""
+
+
 def main():
+    """This is a function docstring"""
     print("Hello world!")
 
 
