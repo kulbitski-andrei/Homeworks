@@ -1,2 +1,2 @@
-disable=
-    invalid-name
+[good-names]
+disable = invalid-name
