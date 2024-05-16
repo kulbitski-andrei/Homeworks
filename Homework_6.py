@@ -7,7 +7,8 @@ print(sample_list_1)
 
 
 # 2. Перевести строку в список
-# "I love arrays they are my favorite" => ["I", "love", "arrays", "they", "are", "my", "favorite"]
+# "I love arrays they are my favorite" =>
+# ["I", "love", "arrays", "they", "are", "my", "favorite"]
 sample_string_2 = "I love arrays they are my favorite"
 sample_list_2 = sample_string_2.split(" ")
 print(sample_list_2)
@@ -19,7 +20,7 @@ name_list = ["Ivan", "Ivanou"]
 name_str = " ".join(name_list)
 city_str = "Minsk"
 country_str = "Belarus"
-print("Привет, {}! Добро пожаловать в {} {}".format(name_str, city_str, country_str))
+print(f"Привет, {name_str}! Добро пожаловать в {city_str} {country_str}")
 
 
 # 4. Дан список ["I", "love", "arrays", "they", "are", "my", "favorite"]
