@@ -17,7 +17,6 @@ def magic_number_generator_func():
 magic_number = magic_number_generator_func()
 
 # User is expected to guess the number in four attempts :)
-print(magic_number)
 attempts = 8
 
 while True:
@@ -35,7 +34,7 @@ while True:
         "Try to guess the magical number. Enter four digits: ... ")
     current_attempt_list = []
 
-    if not current_attempt.isdigit() and not len(current_attempt) == 4:
+    if not current_attempt.isdigit() or not len(current_attempt) == 4:
         print("Wrong input: 4 digits expected. "
               "Please, follow the next pattern: XXXX.")
         continue
@@ -43,7 +42,6 @@ while True:
     for i in current_attempt:
         # User input is stored as four integers packaged in the list
         current_attempt_list.append(int(i))
-        break
 
     for digit_b in magic_number:
         # Loop for calculation of amount of bulls
@@ -68,7 +66,8 @@ while True:
     if attempts <= 0:
         # Victory condition is not met
         print(f"You have no attempts left. "
-              f"Game over. The magic number was {magic_number}")
+              f"Game over. The magic number was "
+              f"{magic_number[0]}{magic_number[1]}{magic_number[2]}{magic_number[3]}")
         break
 
     print(f'{attempts} attempts left!')
