@@ -21,7 +21,6 @@ print(magic_number)
 attempts = 8
 
 while True:
-
     # Position counter for simultaneous enumeration of two lists
     position_key = 0
     # Bulls - amount of full alignments (digit and position)
@@ -29,21 +28,22 @@ while True:
     # Cows - amount of partial alignments (digit only)
     count_of_cows = 0
 
-    while True:
-        # Handling user input:
-        # Every non-4-digit input will be rejected
-        # and user would be forced to retry
-        current_attempt = input(
-            "Try to guess the magical number. Enter four digits: ... ")
-        if current_attempt.isdigit() and len(current_attempt) == 4:
-            current_attempt_list = []
-            for i in current_attempt:
-                # User input is stored as four integers packaged in the list
-                current_attempt_list.append(int(i))
-            break
+    # Handling user input:
+    # Every non-4-digit input will be rejected
+    # and user would be forced to retry
+    current_attempt = input(
+        "Try to guess the magical number. Enter four digits: ... ")
+    current_attempt_list = []
 
+    if not current_attempt.isdigit() and not len(current_attempt) == 4:
         print("Wrong input: 4 digits expected. "
               "Please, follow the next pattern: XXXX.")
+        continue
+
+    for i in current_attempt:
+        # User input is stored as four integers packaged in the list
+        current_attempt_list.append(int(i))
+        break
 
     for digit_b in magic_number:
         # Loop for calculation of amount of bulls
