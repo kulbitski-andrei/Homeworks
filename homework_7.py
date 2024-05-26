@@ -67,7 +67,8 @@ while True:
         # Victory condition is not met
         print(f"You have no attempts left. "
               f"Game over. The magic number was "
-              f"{magic_number[0]}{magic_number[1]}{magic_number[2]}{magic_number[3]}")
+              f"{magic_number[0]}{magic_number[1]}"
+              f"{magic_number[2]}{magic_number[3]}")
         break
 
     print(f'{attempts} attempts left!')
