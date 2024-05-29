@@ -16,7 +16,7 @@ def magic_number_generator_func():
 # Magic number is stored as four integers packaged in the list
 magic_number = magic_number_generator_func()
 
-# print(magic_number)
+print(magic_number)
 
 while True:
     # Position counter for simultaneous enumeration of two lists
@@ -26,28 +26,22 @@ while True:
     # Cows - amount of partial alignments (digit only)
     count_of_cows = 0
 
+    current_attempt = input(
+        "Try to guess the magical number. Enter four digits: ... ")
+
     # Handling user input:
     # Every non-4-digit input will be rejected
     # and user would be forced to retry
-    current_attempt = input(
-        "Try to guess the magical number. Enter four digits: ... ")
-    current_attempt_list = []
-
-    if not current_attempt.isdigit() or not len(current_attempt) == 4:
-        print("Wrong input: 4 digits expected. "
+    unique_input = set(current_attempt)
+    if (not current_attempt.isdigit() or not len(current_attempt) == 4
+            or not len(unique_input) == len(current_attempt)):
+        print("Wrong input: 4 unique digits expected. "
               "Please, follow the next pattern: XXXX.")
         continue
 
-    # User input is stored as four unique integers packaged in the list
-    unique_input = True
+    current_attempt_list = []
     for i in current_attempt:
-        if int(i) in current_attempt_list:
-            unique_input = False
         current_attempt_list.append(int(i))
-
-    if not unique_input:
-        print("Wrong input: Every digit in input should be unique")
-        continue
 
     for digit_b in magic_number:
         # Loop for calculation of amount of bulls
