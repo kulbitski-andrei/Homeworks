@@ -16,8 +16,7 @@ def magic_number_generator_func():
 # Magic number is stored as four integers packaged in the list
 magic_number = magic_number_generator_func()
 
-# User is expected to guess the number in four attempts :)
-attempts = 8
+# print(magic_number)
 
 while True:
     # Position counter for simultaneous enumeration of two lists
@@ -39,9 +38,16 @@ while True:
               "Please, follow the next pattern: XXXX.")
         continue
 
+    # User input is stored as four unique integers packaged in the list
+    unique_input = True
     for i in current_attempt:
-        # User input is stored as four integers packaged in the list
+        if int(i) in current_attempt_list:
+            unique_input = False
         current_attempt_list.append(int(i))
+
+    if not unique_input:
+        print("Wrong input: Every digit in input should be unique")
+        continue
 
     for digit_b in magic_number:
         # Loop for calculation of amount of bulls
@@ -54,24 +60,13 @@ while True:
         # Loop for calculation of amount of cows
         if digit_c in current_attempt_list:
             count_of_cows += 1
+    count_of_cows = count_of_cows - count_of_bulls
     print("Cows:", count_of_cows)
 
     if count_of_bulls == 4:
-        # Victory condition is met
         print("Congratulations, you have won!")
         break
 
-    attempts -= 1
-
-    if attempts <= 0:
-        # Victory condition is not met
-        print(f"You have no attempts left. "
-              f"Game over. The magic number was "
-              f"{magic_number[0]}{magic_number[1]}"
-              f"{magic_number[2]}{magic_number[3]}")
-        break
-
-    print(f'{attempts} attempts left!')
 
 # 2. Пирамида¶
 print("\nTASK 2: PYRAMID")
@@ -86,18 +81,11 @@ while var_N != 0:
     var_N -= 1
     starfield += 2
 
+
 # 3. Статуи¶
 print("\nTASK 3: STATUESQUES")
 
-
-def birthday_presents_sorted_func(*args):
-    """Returns birthday presents as a sorted list of statuesques"""
-    birthday_presents = list(args)
-    birthday_presents.sort()
-    return birthday_presents
-
-
-statuesques = birthday_presents_sorted_func(2, 15, 8, 4, 7, 12, 3, 16, 10, 5)
+statuesques = (2, 15, 8, 4, 7, 12, 3, 16, 10, 5)
 print(statuesques)
 
 smaller_statuesque_size = min(statuesques)
