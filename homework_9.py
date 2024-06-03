@@ -76,7 +76,6 @@ def char_counter(text):
     new_letter = True
     position_index = -1
 
-    # for _ in range(len(text)):
     for _ in text:
 
         position_index += 1
@@ -100,7 +99,7 @@ def char_counter(text):
         else:
             counter += 1
 
-    return None
+    return False
 
 
 # TEST CASES
