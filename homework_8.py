@@ -27,11 +27,11 @@ def solution(args):
 
 
 # TEST CASES
-assert solution([1, 2, 3]) == True
-assert solution([1, 2, 1, 2]) == False
-assert solution([1, 3, 2, 1]) == False
-assert solution([1, 2, 3, 4, 5, 3, 5, 6]) == False
-assert solution([40, 50, 60, 10, 20, 30]) == False
+assert solution([1, 2, 3])
+assert not solution([1, 2, 1, 2])
+assert not solution([1, 3, 2, 1])
+assert not solution([1, 2, 3, 4, 5, 3, 5, 6])
+assert not solution([40, 50, 60, 10, 20, 30])
 
 
 # 2. Число напротив¶
@@ -48,8 +48,8 @@ def numeric_circle(n, first_number):
     return int(first_number + distance)
 
 
-print("\nTask 2")
-print(numeric_circle(10, 2))
+# TEST CASES
+assert numeric_circle(10, 2) == 7
 
 
 # 3. Валидировать номер кредитной карты через алгоритм Луна
@@ -86,5 +86,5 @@ def validate(credit_card_input):
 
 
 # TEST CASES
-print(validate(4561261212345464))  # False expected
-print(validate(4561261212345467))  # True expected
+assert not validate(4561261212345464)
+assert validate(4561261212345467)
