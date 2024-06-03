@@ -27,20 +27,11 @@ def solution(args):
 
 
 # TEST CASES
-print("Task 1")
-print(solution([1, 2, 3]))  # Expected True
-print(solution([1, 2, 1, 2]))  # Expected False
-print(solution([1, 3, 2, 1]))  # Expected False
-print(solution([1, 2, 3, 4, 5, 3, 5, 6]))  # Expected False
-print(solution([40, 50, 60, 10, 20, 30]))  # Expected False
-
-# print(solution([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))  # Expected True
-# print(solution([1, 2, 3, 1, 2, 3]))  # Expected Fasle
-# print(solution([1, 1]))  # Expected True
-# print(solution([100, 105, 120, 110, 140, 170]))  # Expected True
-# print(solution([100, 105, 120, 110, 140, 170, 150]))  # Expected False
-# print(solution([100, 1, 2, 3, 4, 5]))  # Expected True
-# print(solution([1, 2, 3, 4, 5, 100]))  # Expected True
+assert solution([1, 2, 3]) == True
+assert solution([1, 2, 1, 2]) == False
+assert solution([1, 3, 2, 1]) == False
+assert solution([1, 2, 3, 4, 5, 3, 5, 6]) == False
+assert solution([40, 50, 60, 10, 20, 30]) == False
 
 
 # 2. Число напротив¶
@@ -53,11 +44,8 @@ def numeric_circle(n, first_number):
     distance = n / 2  # Distance between numbers
 
     if first_number >= distance:
-        second_number = first_number - distance
-    else:
-        second_number = first_number + distance
-
-    return int(second_number)
+        return int(first_number - distance)
+    return int(first_number + distance)
 
 
 print("\nTask 2")
@@ -91,28 +79,12 @@ def validate(credit_card_input):
 
         is_odd = not is_odd
 
-    # print(control_summ)
-
     if control_summ % 10 != 0:
         return False
 
     return True
 
 
-print("\nTask 3")
+# TEST CASES
 print(validate(4561261212345464))  # False expected
 print(validate(4561261212345467))  # True expected
-
-# print(validate(1111111111111111))  # False expected
-# print(validate(4561261212345461))  # False expected
-# print(validate(378282246310009))  # False expected
-# print(validate(378282246310005))  # True expected (American Express)
-# print(validate(5610591081018250))  # True expected (Australian BankCard)
-# print(validate(6011000990139424))  # True expected (Discover)
-# print(validate(5555555555554444))  # True expected (MasterCard)
-# print(validate(4012888888881881))  # True expected (Visa)
-# print(validate("aaaaaa"))  # "Wrong input!" expected
-# print(validate(""))  # "Wrong input!" expected
-# print(validate(724708))  # True expected
-# print(validate(555))  # False expected
-# print(validate(validate(100)))  # "Wrong input!" expected
