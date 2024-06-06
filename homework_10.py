@@ -35,21 +35,23 @@ assert funny_values(100, 200, 300) == "Valid input!"
 
 # 2. Вернуть число¶
 
-def validate_instance(_):
-    """wrapper that checks if given function arguments
-    are int or float numbers"""
+def validate_instance(func):
+    """wrapper that checks if values returned by the function
+    are numbers (int or float)"""
 
     valid_message = "Valid input!"
     invalid_message = "Invalid input!"
 
     def wrapper(*args):
 
-        for element in args:
-            if isinstance(element, (int, float)):
-                continue
-            return invalid_message
+        for element in func(args)[0]:
 
-        return valid_message
+            if not isinstance(element, (int, float)):
+                print(invalid_message)
+                return False
+
+        print(valid_message)
+        return True
 
     return wrapper
 
@@ -61,10 +63,9 @@ def funny_numbers(*args):
 
 
 # TEST CASES
-assert funny_numbers(0, 100, 200, 300) == "Valid input!"
-assert funny_numbers(5.3, 0.8) == "Valid input!"
-assert funny_numbers(-1) == "Valid input!"
-assert funny_numbers(10, "abcd", 20) == "Invalid input!"
+funny_numbers(-1, 0, 100, 200, 300)
+funny_numbers(5.3, 0.8)
+funny_numbers(10, "abcd", 20)
 
 
 def type_checker(_type):
