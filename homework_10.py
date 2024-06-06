@@ -78,24 +78,18 @@ def type_checker(_type):
             if _type == str:
                 summa = ""
                 for i in args:
-                    if i is None:
-                        i = str("")
                     summa += str(i)
                 return summa
 
             if _type == int:
                 summa = 0
                 for i in args:
-                    if i is None:
-                        i = 0
                     summa += int(i)
                 return summa
 
             if _type == float:
                 summa = 0
                 for i in args:
-                    if i is None:
-                        i = 0
                     summa += float(i)
                 return summa
 
@@ -105,19 +99,19 @@ def type_checker(_type):
 
 
 @type_checker(_type=str)
-def add(a, b, c=None):
+def add(a, b):
     """dummy addition function example 1"""
-    return a + b + c
+    return a + b
 
 
 @type_checker(_type=int)
-def add2(a, b, c=None):
+def add2(a, b, c):
     """dummy addition function example 2"""
     return a + b + c
 
 
 @type_checker(_type=float)
-def add3(a, b, c=None):
+def add3(a, b, c):
     """dummy addition function example 3"""
     return a + b + c
 
