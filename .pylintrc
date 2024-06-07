@@ -1,2 +1,2 @@
 [good-names]
-disable = invalid-name
+disable = invalid-name, too-few-public-methods
