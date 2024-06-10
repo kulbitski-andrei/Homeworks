@@ -8,25 +8,15 @@ def type_checker(_type):
     def wrapper(_):
         def inner(*args):
 
+            converted_types = list(map(_type, args))
+
             if _type == str:
-                summa = ""
-                for i in args:
-                    summa += str(i)
-                return summa
+                result = "".join(converted_types)
+            else:
+                result = sum(converted_types)
 
-            if _type == int:
-                summa = 0
-                for i in args:
-                    summa += int(i)
-                return summa
+            return result
 
-            if _type == float:
-                summa = 0
-                for i in args:
-                    summa += float(i)
-                return summa
-
-            return None
         return inner
     return wrapper
 
