@@ -14,22 +14,21 @@ class Bank:
         self.bank_name = bank_name
 
     @staticmethod
-    def deposit(client_name, money, years):
+    def deposit(money, years):
         """Calculates the final amount after the specified number of years
             with monthly interest growth."""
-
-        client_name = client_name
 
         annual_rate = Decimal("0.10")
         monthly_rate = Decimal(annual_rate / 12)
 
-        for month in range(years * 12):
+        for _month in range(years * 12):
             money = money + Decimal(monthly_rate) * money
-        print(f"Через {years} лет клиент {client_name} "
-              f"будет иметь на счету {round(money, 2)} рублей")
+        print(f"Через {years} лет клиент будет "
+              f"иметь на счету {round(money, 2)} рублей")
+        return round(money, 2)
 
 
 pko_bank = Bank("PKO")
 bsb_bank = Bank("BSB")
-pko_bank.deposit("John Doe", 1000, 5)
-bsb_bank.deposit("Jane Doe", 2000, 2)
+assert pko_bank.deposit(1000, 5) == Decimal("1645.31")
+assert bsb_bank.deposit(2000, 2) == Decimal("2440.78")
