@@ -31,6 +31,6 @@ def funny_numbers(*args):
 
 
 # TEST CASES
-funny_numbers(-1, 0, 100, 200, 300)
-funny_numbers(5.3, 0.8)
-funny_numbers(10, "abcd", 20)
+assert funny_numbers(-1, 0, 100, 200, 300)
+assert funny_numbers(5.3, 0.8)
+assert not funny_numbers(10, "abcd", 20)
