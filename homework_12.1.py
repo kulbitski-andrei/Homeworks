@@ -28,7 +28,6 @@ class CardsDeck:
                 self.deck_list.append(exemplar_card)
         self.deck_list.append(Card("Joker", "Reds"))
         self.deck_list.append(Card("Joker", "Blacks"))
-        print(self.deck_list)
 
     def deck_shuffle(self):
         """Shuffles the deck by randomizing elements in the list"""
@@ -48,4 +47,5 @@ card_selected_index = int(input("There are 54 cards in the deck. "
                           "Select the sequence number of the card "
                           "you want to reveal... ")) - 1
 card_selected_instance = exemplar_card_deck.deck_get(card_selected_index)
-print(f"The card you have chosen is a {card_selected_instance.number} of {card_selected_instance.mast}!")
+print(f"The card you have chosen is a {card_selected_instance.number}"
+      f" of {card_selected_instance.mast}!")
