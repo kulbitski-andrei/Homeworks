@@ -1,4 +1,4 @@
-"""HOMEWORK #11.2"""
+"""HOMEWORK 12.2"""
 
 from decimal import Decimal
 
@@ -7,7 +7,7 @@ from decimal import Decimal
 
 class Currency:
     """Class that describes a currency: its name
-    and relative value for exchange calculation"""
+    and relative value for exchange calculation."""
 
     def __init__(self, name, relative_value):
         self.name = name
@@ -22,7 +22,7 @@ eur = Currency("EUR", 4)
 class Bank:
     """Class bank that allows to create a new bank
     with attribute 'Bank_name'. Contains method 'deposit'
-    that allows user to create a deposit of N money for R years"""
+    that allows user to create a deposit of N money for R years."""
 
     def __init__(self, bank_name, annual_rate):
         self.bank_name = bank_name
@@ -40,13 +40,14 @@ class Bank:
             money = money + Decimal(monthly_rate) * money
             round(money, 2)
         print(f"Через {years} лет клиент {person.name} будет "
-              f"иметь на счету в банке {self.bank_name} {round(money, 2)} {person.currency}")
+              f"иметь на счету в банке {self.bank_name} "
+              f"{round(money, 2)} {person.currency}")
         return round(money, 2)
 
     def exchange_currency(self, person, to_curr=byn):
         """Use amount of money of cpecific currency that person have
-        and exchanges it to the selected currency. Relative price of any currency
-        used to calculate exchange rates"""
+        and exchanges it to the selected currency. Relative price of
+        any currency is used to calculate exchange rates."""
 
         absolute_amount = person.money_amount * person.currency.relative_value
         exchanged_amount = absolute_amount / to_curr.relative_value
@@ -61,7 +62,7 @@ class Bank:
 
 class Client:
     """Class Client describes a person that can come to bank
-     to exchange money or to make a deposit"""
+     to exchange money or to make a deposit."""
 
     def __init__(self, name, money_amount, currency):
         self.name = name
@@ -69,6 +70,7 @@ class Client:
         self.currency = currency
 
     def go_to_work(self):
+        """It's easy. If you want more money - you go to work."""
         self.money_amount += 10
 
 
