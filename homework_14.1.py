@@ -1,60 +1,47 @@
-"""HOMEWORK 14.2"""
+"""HOMEWORK 14.1"""
+
+with open("students.txt", "w+", encoding="utf-8") as file:
+    student_list = file.write("Biba, 1, 8\n"
+                              "Boba, 1, 7\n"
+                              "Boka, 2, 3\n"
+                              "Joka, 2, 6\n"
+                              "Pepa, 2, 10\n"
+                              "Repa, 3, 5\n")
 
 
+with open("students.txt", "r", encoding="utf-8") as file:
+    data = file.readlines()
+    group_1 = group_2 = group_3 = 0
+    exam_1 = exam_2 = exam_3 = 0
+    try:
+        for line in data:
+            student, group, exam = line.split(", ")
+            if group == "1":
+                group_1 += 1
+                exam_1 += int(exam)
+            if group == "2":
+                group_2 += 1
+                exam_2 += int(exam)
+            if group == "3":
+                group_3 += 1
+                exam_3 += int(exam)
+            students_total = group_1 + group_2 + group_3
 
+        exam_1 = exam_1 / group_1
+        exam_2 = exam_2 / group_2
+        exam_3 = exam_3 / group_3
 
+    except ZeroDivisionError:
+        print("There are no students in one or more groups!")
 
+    except ValueError:
+        print("Wrong input data or format: please ensure that "
+              "input data follows next pattern: {str}, {int}, {int}")
 
-# import os
-# from collections import defaultdict
 #
-# # Создаем файл, если его нет
-# if not os.path.exists("students.txt"):
-#     try:
-#         with open("students.txt", "w") as f:
-#             f.write("")
-#     except Exception as e:
-#         print(f"Ошибка при создании файла: {e}")
-#
-# # Записываем информацию о студентах
-# students_info = [
-#     ("Student1", "Group1", 85),
-#     ("Student2", "Group1", 90),
-#     ("Student3", "Group2", 88),
-#     ("Student4", "Group2", 87),
-#     ("Student5", "Group3", 88),
-# ]
-#
-# try:
-#     with open("students.txt", "w") as f:
-#         for student in students_info:
-#             f.write(f"{student[0]}, {student[1]}, {student[2]}\\n")
-# except Exception as e:
-#     print(f"Ошибка при записи в файл: {e}")
-#
-# # Читаем информацию из файла
-# try:
-#     with open("students.txt", "r") as f:
-#         lines = f.readlines()
-# except Exception as e:
-#     print(f"Ошибка при чтении из файла: {e}")
-#
-# # Считаем статистику
-# total_students = len(lines)
-# group_students = defaultdict(int)
-# group_scores = defaultdict(list)
-#
-# for line in lines:
-#     student, group, score = line.strip().split(", ")
-#     group_students[group] += 1
-#     group_scores[group].append(int(score))
-#
-# # Печатаем статистику и записываем ее в файл
-# try:
-#     with open("students.txt", "a") as f:
-#         f.write(f"\\nTotal students: {total_students}\\n")
-#         for group in group_students:
-#             avg_score = sum(group_scores[group]) / group_students[group]
-#             f.write(f"Group {group}: {group_students[group]} students, average score: {avg_score}\\n")
-# except Exception as e:
-#     print(f"Ошибка при записи в файл: {e}")
+with open("students.txt", "a", encoding="utf-8") as file:
+    file.write(f"\n"
+               f"Total students: {students_total}\n"
+               f"First group exam results: {round(exam_1, 1)}\n"
+               f"Second group exam results: {round(exam_2, 1)}\n"
+               f"Third group exam results: {round(exam_3, 1)}")
