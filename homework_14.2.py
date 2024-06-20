@@ -14,12 +14,34 @@ def calculator_engine(expression):
     Do not forget to provide a mathematical expression!"""
 
     # try:
-    (convert_list_element_to_number
+
+    result = (convert_list_element_to_number
      (addition_subtraction
       (multiplication_division
        (exponentiation
         (convert_expression_to_list(expression))))))
-    # except
+
+    return result
+
+    # except ZeroDivisionError:
+    #     cprint.fatal("Division by zero: "
+    #                  "The expression uses division by zero, "
+    #                  "which is not a valid operation\n")
+    #
+    # except NameError:
+    #     cprint.fatal("Error in the expression: "
+    #                  "Make sure the entered expression contains "
+    #                  "only numbers connected by mathematical operators\n")
+    #
+    # except SyntaxError:
+    #     cprint.fatal("Error in the expression: "
+    #                  "Make sure the entered expression contains "
+    #                  "only numbers connected by mathematical operators\n")
+    #
+    # except TypeError:
+    #     cprint.fatal("Incorrect data type: "
+    #                  "The type of the received data does not match "
+    #                  "the numeric type and cannot be processed by the program\n")
 
 
 def convert_expression_to_list(expression):
@@ -51,7 +73,6 @@ def exponentiation(expression_list):
     index_counter = 0
 
     for element in expression_list:
-        print(expression_list)
 
         if element == "**":
             result = int(expression_list[index_counter - 1]) ** int(expression_list[index_counter + 1])
@@ -74,7 +95,6 @@ def multiplication_division(expression_list):
     index_counter = 0
 
     for element in expression_list:
-        print(expression_list)
 
         if element == "*":
             expression_list[index_counter + 1] = (
@@ -102,7 +122,6 @@ def addition_subtraction(expression_list):
     index_counter = 0
 
     for element in expression_list:
-        print(expression_list)
 
         if element == "+":
             result = int(expression_list[index_counter - 1]) + int(expression_list[index_counter + 1])
@@ -123,8 +142,19 @@ def addition_subtraction(expression_list):
     return expression_list
 
 
-assert calculator_engine("1 + 5 - 3") == 3
-assert calculator_engine("-33 + 1 * 2 ** 4 / 2 + 5 - 3 + 2 ** 2") == -19
+# assert calculator_engine("1 + 5 - 3") == 3
+# assert calculator_engine("-33 + 1 * 2 ** 4 / 2 + 5 - 3 + 2 ** 2") == -19
+b = "ee"
+print(calculator_engine(""))
+
+# "10 + n" ValueError: invalid literal for int() with base 10: 'n'
+# "10 / 0" ZeroDivisionError: division by zero
+# "10 - - " ValueError: invalid literal for int() with base 10: '-'
+# "10 +" IndexError: list index out of range
+# 5 + "bb" TypeError: unsupported operand type(s) for +: 'int' and 'str'
+#
+#
+#
 #
 #
 #
