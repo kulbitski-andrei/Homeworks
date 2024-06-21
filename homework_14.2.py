@@ -4,8 +4,6 @@ It supports such operations as exponentiation, multiplication,
 division, addition and subtraction. To unlock more operations
 please consider purchasing Advanced or Pro version."""
 
-from cprint import cprint
-
 
 def calculator_engine(expression):
     """Main function of the app that calls all other functions
@@ -25,33 +23,33 @@ def calculator_engine(expression):
         return result
 
     except ZeroDivisionError:
-        cprint.fatal("Division by zero: \n"
-                     "The expression uses division by zero, \n"
-                     "which is not a valid operation\n")
+        print("Division by zero: \n"
+              "The expression uses division by zero, \n"
+              "which is not a valid operation\n")
 
     except ValueError:
-        cprint.fatal("Error in the expression: \n"
-                     "Make sure the entered expression contain \n"
-                     "only numbers connected by mathematical operators. \n"
-                     "All elements should be separated by a spaces\n")
+        print("Error in the expression: \n"
+              "Make sure the entered expression contain \n"
+              "only numbers connected by mathematical operators. \n"
+              "All elements should be separated by a spaces\n")
 
     except SyntaxError:
-        cprint.fatal("Error in the expression: \n"
-                     "Make sure the entered expression contain \n"
-                     "only numbers connected by mathematical operators. \n"
-                     "All elements should be separated by a spaces\n")
+        print("Error in the expression: \n"
+              "Make sure the entered expression contain \n"
+              "only numbers connected by mathematical operators. \n"
+              "All elements should be separated by a spaces\n")
 
     except IndexError:
-        cprint.fatal("Error in the expression: \n"
-                     "Make sure the entered expression contain \n"
-                     "only numbers connected by mathematical operators. \n"
-                     "All elements should be separated by a spaces\n")
+        print("Error in the expression: \n"
+              "Make sure the entered expression contain \n"
+              "only numbers connected by mathematical operators. \n"
+              "All elements should be separated by a spaces\n")
 
     except TypeError:
-        cprint.fatal("Incorrect data type: \n"
-                     "The type of the received data does not match \n"
-                     "the numeric type and cannot be processed "
-                     "by the program.\n")
+        print("Incorrect data type: \n"
+              "The type of the received data does not match \n"
+              "the numeric type and cannot be processed "
+              "by the program.\n")
 
     return None
 
