@@ -12,7 +12,7 @@ with open("students.txt", "w+", encoding="utf-8") as file:
 with open("students.txt", "r", encoding="utf-8") as file:
     data = file.readlines()
     group_1 = group_2 = group_3 = 0
-    exam_1 = exam_2 = exam_3 = 0
+    exam_1 = exam_2 = exam_3 = 0.0
     try:
         for line in data:
             student, group, exam = line.split(", ")
