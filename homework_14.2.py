@@ -1,11 +1,10 @@
-"""HOMEWORK 14.2"""
-
-# from cprint import cprint
-
-"""Welcome to the Community version of Expression Calculator.
-It supports such operations as exponentiation, multiplication, 
+"""HOMEWORK 14.2
+Welcome to the Community version of Expression Calculator.
+It supports such operations as exponentiation, multiplication,
 division, addition and subtraction. To unlock more operations
 please consider purchasing Advanced or Pro version."""
+
+from cprint import cprint
 
 
 def calculator_engine(expression):
@@ -13,35 +12,48 @@ def calculator_engine(expression):
     and handles different types of errors.
     Do not forget to provide a mathematical expression!"""
 
-    # try:
+    try:
 
-    result = (convert_list_element_to_number
-     (addition_subtraction
-      (multiplication_division
-       (exponentiation
-        (convert_expression_to_list(expression))))))
+        result = (convert_list_element_to_number(
+            addition_subtraction(
+                multiplication_division(
+                    exponentiation(
+                        element_checker(
+                            convert_expression_to_list(
+                                expression)))))))
 
-    return result
+        return result
 
-    # except ZeroDivisionError:
-    #     cprint.fatal("Division by zero: "
-    #                  "The expression uses division by zero, "
-    #                  "which is not a valid operation\n")
-    #
-    # except NameError:
-    #     cprint.fatal("Error in the expression: "
-    #                  "Make sure the entered expression contains "
-    #                  "only numbers connected by mathematical operators\n")
-    #
-    # except SyntaxError:
-    #     cprint.fatal("Error in the expression: "
-    #                  "Make sure the entered expression contains "
-    #                  "only numbers connected by mathematical operators\n")
-    #
-    # except TypeError:
-    #     cprint.fatal("Incorrect data type: "
-    #                  "The type of the received data does not match "
-    #                  "the numeric type and cannot be processed by the program\n")
+    except ZeroDivisionError:
+        cprint.fatal("Division by zero: \n"
+                     "The expression uses division by zero, \n"
+                     "which is not a valid operation\n")
+
+    except ValueError:
+        cprint.fatal("Error in the expression: \n"
+                     "Make sure the entered expression contain \n"
+                     "only numbers connected by mathematical operators. \n"
+                     "All elements should be separated by a spaces\n")
+
+    except SyntaxError:
+        cprint.fatal("Error in the expression: \n"
+                     "Make sure the entered expression contain \n"
+                     "only numbers connected by mathematical operators. \n"
+                     "All elements should be separated by a spaces\n")
+
+    except IndexError:
+        cprint.fatal("Error in the expression: \n"
+                     "Make sure the entered expression contain \n"
+                     "only numbers connected by mathematical operators. \n"
+                     "All elements should be separated by a spaces\n")
+
+    except TypeError:
+        cprint.fatal("Incorrect data type: \n"
+                     "The type of the received data does not match \n"
+                     "the numeric type and cannot be processed "
+                     "by the program.\n")
+
+    return None
 
 
 def convert_expression_to_list(expression):
@@ -49,6 +61,22 @@ def convert_expression_to_list(expression):
 
     expression_list = expression.split(" ")
     return expression_list
+
+
+def element_checker(expression_list):
+    """Raises Value error if one or more elements
+    in provided expression are neither numeric
+    nor mathematical operators"""
+
+    for element in expression_list:
+        if element[0] == "-" and element != "-":
+            element = float(element)
+        if (str(element).isdigit() or isinstance(element, float)
+                or element in ['+', '-', '*', '/', '**']):
+            pass
+        else:
+            raise ValueError
+        return expression_list
 
 
 def convert_list_element_to_number(expression_list):
@@ -75,7 +103,8 @@ def exponentiation(expression_list):
     for element in expression_list:
 
         if element == "**":
-            result = int(expression_list[index_counter - 1]) ** int(expression_list[index_counter + 1])
+            result = (int(expression_list[index_counter - 1]) **
+                      int(expression_list[index_counter + 1]))
             expression_list[index_counter - 1] = result
             del expression_list[index_counter]
             del expression_list[index_counter]
@@ -124,7 +153,8 @@ def addition_subtraction(expression_list):
     for element in expression_list:
 
         if element == "+":
-            result = int(expression_list[index_counter - 1]) + int(expression_list[index_counter + 1])
+            result = (int(expression_list[index_counter - 1]) +
+                      int(expression_list[index_counter + 1]))
             expression_list[index_counter + 1] = result
             list_index_processor(expression_list, index_counter)
 
@@ -142,61 +172,10 @@ def addition_subtraction(expression_list):
     return expression_list
 
 
-# assert calculator_engine("1 + 5 - 3") == 3
-# assert calculator_engine("-33 + 1 * 2 ** 4 / 2 + 5 - 3 + 2 ** 2") == -19
-b = "ee"
-print(calculator_engine(""))
+print(calculator_engine(input("~ ")))
 
-# "10 + n" ValueError: invalid literal for int() with base 10: 'n'
-# "10 / 0" ZeroDivisionError: division by zero
-# "10 - - " ValueError: invalid literal for int() with base 10: '-'
-# "10 +" IndexError: list index out of range
-# 5 + "bb" TypeError: unsupported operand type(s) for +: 'int' and 'str'
-#
-#
-#
-#
-#
-#
-# def calculator(math_expression):
-#     """Accepts math expression and calculates it.
-#     Returns result of the calculation
-#     Can process most Errors and provide messages
-#     with explanation of what could be the reason of the Error"""
-#     try:
-#         math_expression = math_expression.replace(" ", "")
-#         result = eval(math_expression)
-#         return result
-#
-#     except ZeroDivisionError:
-#         cprint.fatal("Деление на ноль: "
-#                      "В выражении применяется деление на ноль, "
-#                      "что не является допустимым действием\n")
-#
-#     except NameError:
-#         cprint.fatal("Ошибка в выражении: "
-#                      "Убедитесь, что введенное выражение содержит "
-#                      "только числа, связанные математическими операторами\n")
-#
-#     except SyntaxError:
-#         cprint.fatal("Ошибка в выражении: "
-#                      "Убедитесь, что введенное выражение содержит "
-#                      "только числа, связанные математическими операторами\n")
-#
-#     except TypeError:
-#         cprint.fatal("Неверный тип данных: "
-#                      "Тип полученных данных не соответствует "
-#                      "числовому и не может быть обработан программой\n")
-#
-#     return "Произошла ошибка, повторите ввод"
-#
-#
-# # TEST CASES
-# assert calculator("5 + 4 9") == 54
-# assert calculator("10 - 3 + 1 8") == 25
-# assert calculator("2 ** 3 - 1 7") == -9
-#
-# assert not calculator("2 ** 3 - 17") == 100
-#
-# print(calculator(input("Пожалуйста, введите математическое выражение, "
-#                        "которое Вы хотите вычислить...")))
+# TEST CASES
+assert calculator_engine("5 + 49") == 54
+assert calculator_engine("10 - 3 + 18") == 25
+assert calculator_engine("2 ** 3 - 17") == -9
+assert calculator_engine("-33 + 1 * 2 ** 4 / 2 + 5 - 3 + 2 ** 2") == -19
