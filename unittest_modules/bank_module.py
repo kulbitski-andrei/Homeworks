@@ -84,8 +84,8 @@ class Client:
 # bank_bsb.exchange_currency(client_socrates)
 # bank_bsb.exchange_currency(client_plato, eur)
 # bank_pko.exchange_currency(client_aristotle, usd)
-
-# TEST CASES
+#
+# # TEST CASES
 # assert (client_socrates.money_amount == 40.0
 #         and client_socrates.currency == "BYN")
 # assert (client_plato.money_amount == 3.75
