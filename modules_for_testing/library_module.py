@@ -88,20 +88,20 @@ class Reader:
         return True
 
 
-book_1 = Book("Foundation", "Isaac Asimov", 725, 220180)
-book_2 = Book("Solaris", "Stanislaw Lem", 344, 531240)
-
-reader_finn = Reader("Finn the Human")
-reader_jake = Reader("Jake the Dog")
-
-reader_jake.reserve_book(book_1)
-assert not reader_finn.reserve_book(book_1)
-assert not reader_finn.take_book(book_1)
-
-reader_jake.take_book(book_1)
-assert not reader_finn.reserve_book(book_1)
-assert not reader_finn.take_book(book_1)
-
-reader_jake.return_book(book_1)
-assert reader_finn.reserve_book(book_1)
-assert reader_finn.take_book(book_1)
+# book_1 = Book("Foundation", "Isaac Asimov", 725, 220180)
+# book_2 = Book("Solaris", "Stanislaw Lem", 344, 531240)
+#
+# reader_finn = Reader("Finn the Human")
+# reader_jake = Reader("Jake the Dog")
+#
+# reader_jake.reserve_book(book_1)
+# assert not reader_finn.reserve_book(book_1)
+# assert not reader_finn.take_book(book_1)
+#
+# reader_jake.take_book(book_1)
+# assert not reader_finn.reserve_book(book_1)
+# assert not reader_finn.take_book(book_1)
+#
+# reader_jake.return_book(book_1)
+# assert reader_finn.reserve_book(book_1)
+# assert reader_finn.take_book(book_1)

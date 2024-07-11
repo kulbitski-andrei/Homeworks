@@ -1,7 +1,7 @@
 """Unittest test cases for bank_module"""
 
 import unittest
-from unittest_modules import bank_module
+from modules_for_testing import bank_module
 
 
 class ExchangeRatesToBynTesting(unittest.TestCase):
