@@ -32,25 +32,25 @@ class Reader:
     def __init__(self, name):
 
         self.name = name
-        print(f"В библиотеку записался новый читатель: {self.name}")
+        # print(f"В библиотеку записался новый читатель: {self.name}")
 
     def reserve_book(self, book):
         """Reserving a book to a particular reader
         prevents reserving/taking this book by other reader"""
 
         if book.status == "Reserved" and book.reserved_by != self.name:
-            print(f"Невозможно зарезервировать книгу '{book.title}' "
-                  f"для {self.name} - она уже зарезервирована "
-                  f"другим читателем!")
+            # print(f"Невозможно зарезервировать книгу '{book.title}' "
+            #       f"для {self.name} - она уже зарезервирована "
+            #       f"другим читателем!")
             return False
         if book.status == "Taken":
-            print(f"Невозможно зарезервировать книгу '{book.title}' "
-                  f"для {self.name} - ее уже кто-то читает!")
+            # print(f"Невозможно зарезервировать книгу '{book.title}' "
+            #       f"для {self.name} - ее уже кто-то читает!")
             return False
         book.status = "Reserved"
         book.reserved_by = self.name
-        print(f"Книга '{book.title}' была "
-              f"зарезервирована читателем {self.name}")
+        # print(f"Книга '{book.title}' была "
+        #       f"зарезервирована читателем {self.name}")
         return True
 
     def take_book(self, book):
@@ -58,20 +58,20 @@ class Reader:
         prevents reserving/taking this book by anyone"""
 
         if book.status == "Reserved" and book.reserved_by != self.name:
-            print(f"Невозможно взять книгу '{book.title}' "
-                  f"для {self.name} - она уже зарезервирована "
-                  f"другим читателем!")
+            # print(f"Невозможно взять книгу '{book.title}' "
+            #       f"для {self.name} - она уже зарезервирована "
+            #       f"другим читателем!")
             return False
         if book.status == "Taken":
-            print(f"Невозможно взять книгу '{book.title}' "
-                  f"для {self.name} - ее уже взял кто-то другой!")
+            # print(f"Невозможно взять книгу '{book.title}' "
+            #       f"для {self.name} - ее уже взял кто-то другой!")
             return False
 
         book.status = "Taken"
         book.taken_by = self.name
         book.reserved_by = None
-        print(f"Книга '{book.title}' была "
-              f"взята из библиотеки читателем {self.name}")
+        # print(f"Книга '{book.title}' была "
+        #       f"взята из библиотеки читателем {self.name}")
         return True
 
     def return_book(self, book):
@@ -79,12 +79,12 @@ class Reader:
         to be reserved/taken by any reader again."""
 
         if book.taken_by != self.name:
-            print("Нельзя вернуть то, чего у вас нет!")
+            # print("Нельзя вернуть то, чего у вас нет!")
             return False
         book.status = "Available"
         book.taken_by = None
         book.reserved_by = None
-        print(f"Книга '{book.title}' была возвращена в библиотеку")
+        # print(f"Книга '{book.title}' была возвращена в библиотеку")
         return True
 
 
