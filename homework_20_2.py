@@ -17,13 +17,14 @@ def generate_random_book():
     return [rnd_book_title, rnd_author_name, rnd_page_number, rnd_isbn]
 
 
+formatter = logging.Formatter(
+    '\n%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler = logging.StreamHandler()
+handler.setFormatter(formatter)
+
 logger = logging.getLogger(__name__)
+logger.addHandler(handler)
 logger.setLevel(logging.INFO)
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
-formatter = logging.Formatter('\n%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
 
 
 class UserTakeABook(unittest.TestCase):
