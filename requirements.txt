@@ -4,4 +4,5 @@ mypy
 ruff
 pylint
 cprint~=1.2.2
-logging
+logging~=0.4.9.6
+pytest~=8.2.2
