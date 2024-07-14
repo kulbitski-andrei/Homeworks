@@ -8,8 +8,8 @@ from modules_for_testing import library_module
 
 
 def generate_random_book():
-    """Function generates random book title, author name,
-     page number and ISBN"""
+    """This function generates a random book title, author name,
+     page number and ISBN."""
     rnd_book_title = ''.join(random.choices(string.ascii_letters + ' ', k=20))
     rnd_author_name = ''.join(random.choices(string.ascii_letters + ' ', k=20))
     rnd_page_number = ''.join(random.choices(string.digits, k=3))
@@ -28,7 +28,7 @@ logger.setLevel(logging.INFO)
 
 
 class UserTakeABook(unittest.TestCase):
-    """User takes a book"""
+    """This class tests scenarios where a user takes a book."""
 
     @classmethod
     def setUpClass(cls):
@@ -44,14 +44,15 @@ class UserTakeABook(unittest.TestCase):
         self.book_1.reserved_by = None
 
     def test_user_take_unreserved_book(self):
-        """User is able to take a book if it's not reserved and
-        not taken by other users"""
+        """This test checks if a user can take a book
+        that is not reserved and not taken by other users."""
         logger.info("Testing if user can take an unreserved book")
         self.assertTrue(self.reader_1.take_book(self.book_1))
         logger.info("Test completed")
 
     def test_user_takes_book_when_its_already_taken(self):
-        """User is not able to take a book if it's taken by another user"""
+        """This test checks if a user can take a book
+        that is already taken by another user."""
         logger.info("Testing if user can't take a book "
                     "that is already taken by another user")
         self.reader_1.take_book(self.book_1)
@@ -59,15 +60,16 @@ class UserTakeABook(unittest.TestCase):
         logger.info("Test completed")
 
     def test_take_self_reserved_book(self):
-        """User is able to take a book if it's reserved by him/herself"""
+        """This test checks if a user can take a book
+        that he/she has reserved."""
         logger.info("Testing if user can take a book he/she reserved")
         self.reader_2.reserve_book(self.book_1)
         self.assertTrue(self.reader_2.take_book(self.book_1))
         logger.info("Test completed")
 
     def test_take_another_user_reserved_book(self):
-        """User is not able to take a book if it's reserved by
-        another user"""
+        """This test checks if a user can take a book
+        that is reserved by another user."""
         logger.info("Testing if user can't take a book another user reserved")
         self.reader_1.reserve_book(self.book_1)
         self.assertFalse(self.reader_2.take_book(self.book_1))
@@ -75,7 +77,7 @@ class UserTakeABook(unittest.TestCase):
 
 
 class UserReturnsABook(unittest.TestCase):
-    """User returns a book"""
+    """This class tests scenarios where a user returns a book."""
 
     @classmethod
     def setUpClass(cls):
@@ -91,22 +93,23 @@ class UserReturnsABook(unittest.TestCase):
         self.book_2.reserved_by = None
 
     def test_user_returns_a_book_he_have(self):
-        """User is able to return a book previously taken by that user"""
+        """This test checks if a user can return a book
+        that was previously taken by that user."""
         logger.info("Testing if user can take an unreserved book")
         self.reader_3.take_book(self.book_2)
         self.assertTrue(self.reader_3.return_book(self.book_2))
         logger.info("Test completed")
 
     def test_user_returns_a_book_he_doesnt_have(self):
-        """User is not able to return a book that have
-        not taken status"""
+        """This test checks if a user can return a book
+        that he/she has not taken."""
         logger.info("Testing if user can return book he doesn't have")
         self.assertFalse(self.reader_3.return_book(self.book_2))
         logger.info("Test completed")
 
     def test_user_returns_a_book_taken_by_another_user(self):
-        """User is not able to return a book that was
-        taken by other user"""
+        """This test checks if a user can return a book
+        that was taken by another user."""
         logger.info("Testing if user can return book taken by other user")
         self.reader_4.take_book(self.book_2)
         self.assertFalse(self.reader_3.return_book(self.book_2))
@@ -114,7 +117,7 @@ class UserReturnsABook(unittest.TestCase):
 
 
 class UserReservesABook(unittest.TestCase):
-    """User reserves a book"""
+    """This class tests scenarios where a user reserves a book."""
 
     @classmethod
     def setUpClass(cls):
@@ -130,15 +133,15 @@ class UserReservesABook(unittest.TestCase):
         self.book_3.reserved_by = None
 
     def test_user_reserves_a_book_not_reserved(self):
-        """User is able to reserve a book
-        that is not reserved by anyone"""
+        """This test checks if a user can reserve a book
+        that is not reserved by anyone."""
         logger.info("Testing if user can reserve unreserved book")
         self.assertTrue(self.reader_5.reserve_book(self.book_3))
         logger.info("Test completed")
 
     def test_user_reserves_a_book_reserved_by_other_user(self):
-        """User is not able to reserve a book
-        that is reserved by another user"""
+        """This test checks if a user can reserve a book
+        that is reserved by another user."""
         logger.info("Testing if user can't reserve reserved book")
         self.reader_5.reserve_book(self.book_3)
         self.assertFalse(self.reader_6.reserve_book(self.book_3))
