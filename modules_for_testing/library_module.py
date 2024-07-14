@@ -1,4 +1,4 @@
-"""HOMEWORK #11.1"""
+"""LIBRARY MODULE"""
 
 
 # 1.  Библиотека¶

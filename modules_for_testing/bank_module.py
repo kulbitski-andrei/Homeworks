@@ -1,6 +1,16 @@
-"""HOMEWORK 12.2"""
+"""BANK MODULE"""
 
+import logging
 from decimal import Decimal
+
+formatter = logging.Formatter(
+    '\n%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler = logging.StreamHandler()
+handler.setFormatter(formatter)
+
+logger = logging.getLogger(__name__)
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)
 
 # 1. Банковский вклад¶
 
@@ -55,8 +65,9 @@ class Bank:
         person.money_amount = exchanged_amount
         person.currency = to_curr.name
 
-        # print(f"Клиент {person.name} обменял {old_data} на "
-        #       f"{exchanged_amount} {to_curr.name} в банке {self.bank_name}")
+        logger.info("Клиент %s обменял %s на %s %s в банке %s",
+                    person.name, old_data, exchanged_amount,
+                    to_curr.name, self.bank_name)
         return exchanged_amount, to_curr.name
 
 
@@ -72,7 +83,6 @@ class Client:
     def go_to_work(self):
         """It's easy. If you want more money - you go to work."""
         self.money_amount += 10
-
 
 # client_socrates = Client("Сократ", 10, eur)
 # client_plato = Client("Платон", 5, usd)
