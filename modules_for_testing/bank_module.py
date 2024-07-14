@@ -46,12 +46,18 @@ class Bank:
         annual_rate = Decimal(str(self.annual_rate))
         monthly_rate = Decimal(annual_rate / 12)
 
+        if money <= 0:
+            raise ValueError
+
+        if years <= 0:
+            raise ValueError
+
         for _month in range(years * 12):
             money = money + Decimal(monthly_rate) * money
             round(money, 2)
-        print(f"Через {years} лет клиент {person.name} будет "
+        print(f"\nЧерез {years} лет клиент {person.name} будет "
               f"иметь на счету в банке {self.bank_name} "
-              f"{round(money, 2)} {person.currency}")
+              f"{round(money, 2)} {person.currency.name}")
         return round(money, 2)
 
     def exchange_currency(self, person, to_curr=byn):
