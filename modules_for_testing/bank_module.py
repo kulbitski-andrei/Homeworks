@@ -55,8 +55,8 @@ class Bank:
         person.money_amount = exchanged_amount
         person.currency = to_curr.name
 
-        print(f"Клиент {person.name} обменял {old_data} на "
-              f"{exchanged_amount} {to_curr.name} в банке {self.bank_name}")
+        # print(f"Клиент {person.name} обменял {old_data} на "
+        #       f"{exchanged_amount} {to_curr.name} в банке {self.bank_name}")
         return exchanged_amount, to_curr.name
 
 
