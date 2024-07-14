@@ -1,3 +1,5 @@
+"""HOMEWORK 20_2"""
+
 import logging
 import unittest
 import random
@@ -29,13 +31,13 @@ class UserTakeABook(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        logger.info(f"Setting up the test class {cls.__name__}")
+        logger.info("Setting up the test class %s", cls.__name__)
         cls.book_1 = library_module.Book(*generate_random_book())
         cls.reader_1 = library_module.Reader("Reader_1")
         cls.reader_2 = library_module.Reader("Reader_2")
 
     def setUp(self):
-        logger.info(f"Setting up the test method for {self}")
+        logger.info("Setting up the test method for %s", self)
         self.book_1.status = "Available"
         self.book_1.taken_by = None
         self.book_1.reserved_by = None
@@ -77,13 +79,13 @@ class UserReturnsABook(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        logger.info(f"Setting up the test class {cls.__name__}")
+        logger.info("Setting up the test class %s", cls.__name__)
         cls.book_2 = library_module.Book(*generate_random_book())
         cls.reader_3 = library_module.Reader("Reader_3")
         cls.reader_4 = library_module.Reader("Reader_4")
 
     def setUp(self):
-        logger.info(f"Setting up the test method for {self}")
+        logger.info("Setting up the test method for %s", self)
         self.book_2.status = "Available"
         self.book_2.taken_by = None
         self.book_2.reserved_by = None
@@ -116,13 +118,13 @@ class UserReservesABook(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        logger.info(f"Setting up the test class {cls.__name__}")
+        logger.info("Setting up the test class %s", cls.__name__)
         cls.book_3 = library_module.Book(*generate_random_book())
         cls.reader_5 = library_module.Reader("Reader_5")
         cls.reader_6 = library_module.Reader("Reader_6")
 
     def setUp(self):
-        logger.info(f"Setting up the test method for {self}")
+        logger.info("Setting up the test method for %s", self)
         self.book_3.status = "Available"
         self.book_3.taken_by = None
         self.book_3.reserved_by = None
