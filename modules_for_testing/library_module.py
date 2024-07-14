@@ -58,13 +58,13 @@ class Reader:
         prevents reserving/taking this book by anyone"""
 
         if book.status == "Reserved" and book.reserved_by != self.name:
-            # print(f"Невозможно взять книгу '{book.title}' "
-            #       f"для {self.name} - она уже зарезервирована "
-            #       f"другим читателем!")
+            print(f"Невозможно взять книгу '{book.title}' "
+                  f"для {self.name} - она уже зарезервирована "
+                  f"другим читателем!")
             return False
         if book.status == "Taken":
-            # print(f"Невозможно взять книгу '{book.title}' "
-            #       f"для {self.name} - ее уже взял кто-то другой!")
+            print(f"Невозможно взять книгу '{book.title}' "
+                  f"для {self.name} - ее уже взял кто-то другой!")
             return False
 
         book.status = "Taken"
@@ -84,7 +84,7 @@ class Reader:
         book.status = "Available"
         book.taken_by = None
         book.reserved_by = None
-        # print(f"Книга '{book.title}' была возвращена в библиотеку")
+        print(f"Книга '{book.title}' была возвращена в библиотеку")
         return True
 
 
