@@ -4,3 +4,4 @@ mypy
 ruff
 pylint
 cprint~=1.2.2
+logging
