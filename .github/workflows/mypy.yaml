@@ -21,5 +21,6 @@ jobs:
           pip install mypy
       - name: Analysing the code with mypy
         run: |
+          mkdir .mypy_cache
           mypy --ignore-missing-imports --install-types --non-interactive --exclude venv --cache-dir=.mypy_cache .
           
