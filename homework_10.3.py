@@ -10,7 +10,7 @@ def type_checker(_type):
 
             converted_types = list(map(_type, args))
 
-            if _type == str:
+            if _type is str:
                 result = "".join(converted_types)
             else:
                 result = sum(converted_types)
