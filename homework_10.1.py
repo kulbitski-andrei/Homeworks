@@ -25,5 +25,5 @@ def funny_values(*args):
 
 # TEST CASES
 assert funny_values(100, 200, 300) == (100, 200, 300)
-assert funny_values(5, 0) == ValueError
-assert funny_values(-1) == ValueError
+assert funny_values(5, 0) is ValueError
+assert funny_values(-1) is ValueError
