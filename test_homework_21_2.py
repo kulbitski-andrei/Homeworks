@@ -83,7 +83,8 @@ def test_user_takes_book_when_its_already_taken(
     logger.info("Performed Successfully")
 
 
-def test_take_self_reserved_book(instances_for_testing, return_book_and_clear_book_status):
+def test_take_self_reserved_book(
+        instances_for_testing, return_book_and_clear_book_status):
     """This test checks if a user can take a book
     that he/she has reserved."""
     logger.info("Testing if user can take a book "
