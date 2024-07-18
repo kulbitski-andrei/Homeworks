@@ -1,6 +1,5 @@
 """HOMEWORK 21_2"""
 
-# fixes_needed unused-argument, unused-variable
 
 import logging
 import random
@@ -32,7 +31,7 @@ handler.setFormatter(formatter)
 
 logger = logging.getLogger(__name__)
 logger.addHandler(handler)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="module")
@@ -92,7 +91,7 @@ def test_take_self_reserved_book(instances_for_testing, return_book_and_clear_bo
     book_1, reader_1, reader_2 = instances_for_testing
     reader_1.reserve_book(book_1)
     assert reader_1.take_book(book_1)
-    logger.info("Performed Successfully")
+    logger.debug("Performed Successfully")
 
 
 def test_take_another_user_reserved_book(
@@ -104,7 +103,7 @@ def test_take_another_user_reserved_book(
     book_1, reader_1, reader_2 = instances_for_testing
     reader_2.reserve_book(book_1)
     assert not reader_1.take_book(book_1)
-    logger.info("Performed Successfully")
+    logger.debug("Performed Successfully")
 
 
 def test_user_returns_a_book_he_have(
@@ -116,7 +115,7 @@ def test_user_returns_a_book_he_have(
     book_1, reader_1, reader_2 = instances_for_testing
     reader_1.take_book(book_1)
     assert reader_1.return_book(book_1)
-    logger.info("Performed Successfully")
+    logger.debug("Performed Successfully")
 
 
 def test_user_returns_a_book_he_doesnt_have(
@@ -127,7 +126,7 @@ def test_user_returns_a_book_he_doesnt_have(
                 "he doesn't have")
     book_1, reader_1, reader_2 = instances_for_testing
     assert not reader_1.return_book(book_1)
-    logger.info("Performed Successfully")
+    logger.debug("Performed Successfully")
 
 
 def test_user_returns_a_book_taken_by_another_user(
@@ -139,7 +138,7 @@ def test_user_returns_a_book_taken_by_another_user(
     book_1, reader_1, reader_2 = instances_for_testing
     reader_1.take_book(book_1)
     assert not reader_2.return_book(book_1)
-    logger.info("Performed Successfully")
+    logger.debug("Performed Successfully")
 
 
 def test_user_reserves_a_book_not_reserved(
@@ -149,7 +148,7 @@ def test_user_reserves_a_book_not_reserved(
     logger.info("Testing if user can reserve an unreserved book")
     book_1, reader_1, reader_2 = instances_for_testing
     assert reader_1.reserve_book(book_1)
-    logger.info("Performed Successfully")
+    logger.debug("Performed Successfully")
 
 
 def test_user_reserves_a_book_reserved_by_other_user(
@@ -161,4 +160,4 @@ def test_user_reserves_a_book_reserved_by_other_user(
     book_1, reader_1, reader_2 = instances_for_testing
     reader_1.reserve_book(book_1)
     assert not reader_2.reserve_book(book_1)
-    logger.info("Performed Successfully")
+    logger.debug("Performed Successfully")
