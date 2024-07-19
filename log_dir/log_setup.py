@@ -1,3 +1,5 @@
+"""LOGGING SETUP MODULE"""
+
 import logging
 
 formatter = logging.Formatter(
