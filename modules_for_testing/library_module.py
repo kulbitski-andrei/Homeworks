@@ -31,7 +31,8 @@ class Reader:
     def __init__(self, name):
 
         self.name = name
-        log_setup.logger.info("В библиотеку записался новый читатель: %s", self.name)
+        log_setup.logger.info("В библиотеку записался "
+                              "новый читатель: %s", self.name)
 
     def reserve_book(self, book):
         """Reserving a book to a particular reader
@@ -94,7 +95,8 @@ class Reader:
         book.status = "Available"
         book.taken_by = None
         book.reserved_by = None
-        log_setup.logger.info(f"Книга '%s' была возвращена в библиотеку", {book.title})
+        log_setup.logger.info("Книга '%s' была возвращена "
+                              "в библиотеку", book.title)
         return True
 
 

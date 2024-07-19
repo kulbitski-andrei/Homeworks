@@ -1,7 +1,7 @@
 """BANK MODULE"""
 
-from log_dir import log_setup
 from decimal import Decimal
+from log_dir import log_setup
 
 
 # 1. Банковский вклад¶
@@ -47,8 +47,10 @@ class Bank:
         for _month in range(years * 12):
             money = money + Decimal(monthly_rate) * money
             round(money, 2)
-        log_setup.logger.warning("\nЧерез %s лет клиент %s будет иметь на счету в банке %s %s %s",
-            years, person.name, self.bank_name, round(money, 2), person.currency.name)
+        log_setup.logger.warning("\nЧерез %s лет клиент %s будет "
+                                 "иметь на счету в банке %s %s %s",
+                                 years, person.name, self.bank_name,
+                                 round(money, 2), person.currency.name)
         return round(money, 2)
 
     def exchange_currency(self, person, to_curr=byn):
@@ -63,8 +65,8 @@ class Bank:
         person.currency = to_curr.name
 
         log_setup.logger.warning("Клиент %s обменял %s на %s %s в банке %s",
-                    person.name, old_data, exchanged_amount,
-                    to_curr.name, self.bank_name)
+                                 person.name, old_data, exchanged_amount,
+                                 to_curr.name, self.bank_name)
         return exchanged_amount, to_curr.name
 
 
@@ -83,7 +85,6 @@ class Client:
 
 
 if __name__ == "__main__":
-
     client_socrates = Client("Сократ", 10, eur)
     client_plato = Client("Платон", 5, usd)
     client_aristotle = Client("Аристотель", 15, byn)
