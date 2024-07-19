@@ -1,17 +1,8 @@
 """HOMEWORK 20_1"""
 
-import logging
 import unittest
+from log_dir import log_setup
 from modules_for_testing import bank_module
-
-formatter = logging.Formatter(
-    '\n%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler = logging.StreamHandler()
-handler.setFormatter(formatter)
-
-logger = logging.getLogger(__name__)
-logger.addHandler(handler)
-logger.setLevel(logging.INFO)
 
 
 class ExchangeRatesToBynTesting(unittest.TestCase):
@@ -21,7 +12,7 @@ class ExchangeRatesToBynTesting(unittest.TestCase):
     def setUpClass(cls):
         """Setting up Test Class: create test bank instance and
         test client instances with EUR and USD currencies"""
-        logger.info("Setting up the test class %s", cls.__name__)
+        log_setup.logger.info("Setting up the test class %s", cls.__name__)
         cls.bank_instance = bank_module.Bank("pko_to_byn", 0.15)
         cls.client_1 = bank_module.Client(
             "test_client_1", 100, bank_module.eur)
@@ -30,13 +21,13 @@ class ExchangeRatesToBynTesting(unittest.TestCase):
 
     def test_eur_to_byn_rate(self):
         """EUR to BYN conversion"""
-        logger.info("Testing EUR to BYN conversion")
+        log_setup.logger.info("Testing EUR to BYN conversion")
         self.bank_instance.exchange_currency(self.client_1)
         self.assertEqual(self.client_1.money_amount, 400.0)
 
     def test_usd_to_byn_rate(self):
         """USD to BYN conversion"""
-        logger.info("Testing USD to BYN conversion")
+        log_setup.logger.info("Testing USD to BYN conversion")
         self.bank_instance.exchange_currency(self.client_2)
         self.assertEqual(self.client_2.money_amount, 300.0)
 
@@ -48,7 +39,7 @@ class ExchangeRatesToEurTesting(unittest.TestCase):
     def setUpClass(cls):
         """Setting up Test Class: create test bank instance and
         test client instances with EUR and USD currencies"""
-        logger.info("Setting up the test class %s", cls.__name__)
+        log_setup.logger.info("Setting up the test class %s", cls.__name__)
         cls.bank_instance = bank_module.Bank("bsb_to_eur", 0.15)
         cls.client_3 = bank_module.Client(
             "test_client_2", 100, bank_module.usd)
@@ -57,13 +48,13 @@ class ExchangeRatesToEurTesting(unittest.TestCase):
 
     def test_usd_to_eur_rate(self):
         """USD to EUR conversion"""
-        logger.info("Testing USD to EUR conversion")
+        log_setup.logger.info("Testing USD to EUR conversion")
         self.bank_instance.exchange_currency(self.client_3, bank_module.eur)
         self.assertEqual(self.client_3.money_amount, 75.0)
 
     def test_byn_to_eur_rate(self):
         """BYN to EUR conversion"""
-        logger.info("Testing BYN to EUR conversion")
+        log_setup.logger.info("Testing BYN to EUR conversion")
         self.bank_instance.exchange_currency(self.client_4, bank_module.eur)
         self.assertEqual(self.client_4.money_amount, 25.0)
 
@@ -83,13 +74,13 @@ class ExchangeRatesToUsdTesting(unittest.TestCase):
 
     def test_usd_to_eur_rate(self):
         """USD to EUR conversion"""
-        logger.info("Testing USD to EUR conversion")
+        log_setup.logger.info("Testing USD to EUR conversion")
         self.bank_instance.exchange_currency(self.client_5, bank_module.usd)
         self.assertEqual(self.client_5.money_amount, 133.33333333333334)
 
     def test_byn_to_eur_rate(self):
         """BYN to EUR conversion"""
-        logger.info("Testing BYN to EUR conversion")
+        log_setup.logger.info("Testing BYN to EUR conversion")
         self.bank_instance.exchange_currency(self.client_6, bank_module.usd)
         self.assertEqual(self.client_6.money_amount, 33.333333333333336)
 

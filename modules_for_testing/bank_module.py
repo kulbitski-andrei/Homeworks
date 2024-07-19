@@ -1,16 +1,8 @@
 """BANK MODULE"""
 
-import logging
+from log_dir import log_setup
 from decimal import Decimal
 
-formatter = logging.Formatter(
-    '\n%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler = logging.StreamHandler()
-handler.setFormatter(formatter)
-
-logger = logging.getLogger(__name__)
-logger.addHandler(handler)
-logger.setLevel(logging.INFO)
 
 # 1. Банковский вклад¶
 
@@ -55,9 +47,8 @@ class Bank:
         for _month in range(years * 12):
             money = money + Decimal(monthly_rate) * money
             round(money, 2)
-        print(f"\nЧерез {years} лет клиент {person.name} будет "
-              f"иметь на счету в банке {self.bank_name} "
-              f"{round(money, 2)} {person.currency.name}")
+        log_setup.logger.warning("\nЧерез %s лет клиент %s будет иметь на счету в банке %s %s %s",
+            years, person.name, self.bank_name, round(money, 2), person.currency.name)
         return round(money, 2)
 
     def exchange_currency(self, person, to_curr=byn):
@@ -71,7 +62,7 @@ class Bank:
         person.money_amount = exchanged_amount
         person.currency = to_curr.name
 
-        logger.info("Клиент %s обменял %s на %s %s в банке %s",
+        log_setup.logger.warning("Клиент %s обменял %s на %s %s в банке %s",
                     person.name, old_data, exchanged_amount,
                     to_curr.name, self.bank_name)
         return exchanged_amount, to_curr.name
@@ -90,24 +81,25 @@ class Client:
         """It's easy. If you want more money - you go to work."""
         self.money_amount += 10
 
-# client_socrates = Client("Сократ", 10, eur)
-# client_plato = Client("Платон", 5, usd)
-# client_aristotle = Client("Аристотель", 15, byn)
-#
-# bank_bsb = Bank("BelSwissBank", 0.10)
-# bank_pko = Bank("PKO Bank", 0.15)
-#
-# bank_bsb.exchange_currency(client_socrates)
-# bank_bsb.exchange_currency(client_plato, eur)
-# bank_pko.exchange_currency(client_aristotle, usd)
-#
-# # TEST CASES
-# assert (client_socrates.money_amount == 40.0
-#         and client_socrates.currency == "BYN")
-# assert (client_plato.money_amount == 3.75
-#         and client_plato.currency == "EUR")
-# assert (client_aristotle.money_amount == 5
-#         and client_aristotle.currency == "USD")
-#
-# # TEST CASES
-# assert bank_pko.deposit(client_socrates, 5) == Decimal("84.29")
+
+if __name__ == "__main__":
+
+    client_socrates = Client("Сократ", 10, eur)
+    client_plato = Client("Платон", 5, usd)
+    client_aristotle = Client("Аристотель", 15, byn)
+
+    bank_bsb = Bank("BelSwissBank", 0.10)
+    bank_pko = Bank("PKO Bank", 0.15)
+
+    bank_bsb.exchange_currency(client_socrates)
+    bank_bsb.exchange_currency(client_plato, eur)
+    bank_pko.exchange_currency(client_aristotle, usd)
+
+    # TEST CASES
+    assert (client_socrates.money_amount == 40.0
+            and client_socrates.currency == "BYN")
+    assert (client_plato.money_amount == 3.75
+            and client_plato.currency == "EUR")
+    assert (client_aristotle.money_amount == 5
+            and client_aristotle.currency == "USD")
+    assert bank_pko.deposit(client_socrates, 5) == Decimal("84.29")
