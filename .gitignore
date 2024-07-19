@@ -17,3 +17,6 @@ venv/
 .idea/
 homework_21/assets/style.css
 
+/log.html
+/output.xml
+/report.html
