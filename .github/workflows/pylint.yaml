@@ -21,10 +21,11 @@ jobs:
           pip install pylint
       - name: Set PYTHONPATH
         run: |
-          echo "PYTHONPATH=$(pwd)/modules_for_testing" >> $GITHUB_ENV
-          echo "PYTHONPATH=$(pwd)/log_dir" >> $GITHUB_ENV
+          echo "PYTHONPATH=$(pwd)/modules_for_testing:$(pwd)/log_dir" >> $GITHUB_ENV
       - name: Analysing the code with pylint
         run: |
           pylint $(git ls-files '*.py')
+        env:
+          PYTHONPATH: ${{ env.PYTHONPATH }}
           
 
