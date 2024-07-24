@@ -59,9 +59,3 @@ class Client:
     def go_to_work(self):
         """It's easy. If you want more money - you go to work."""
         self.money_amount += 10
-
-
-client_socrates = Client("Сократ", 10)
-bank_pko = Bank("PKO Bank", 0.15)
-print(bank_pko.deposit(client_socrates, 5))
-assert bank_pko.deposit(client_socrates, 5) == Decimal("21.07")
