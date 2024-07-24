@@ -50,7 +50,7 @@ class Bank:
         log_setup.logger.warning("\nЧерез %s лет клиент %s будет "
                                  "иметь на счету в банке %s %s %s",
                                  years, person.name, self.bank_name,
-                                 round(money, 2), person.currency.name)
+                                 round(money, 2), person.currency)
         return round(money, 2)
 
     def exchange_currency(self, person, to_curr=byn):

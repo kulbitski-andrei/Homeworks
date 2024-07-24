@@ -134,7 +134,7 @@ ${READER_NAME_2}  Another Reader
     ${result3}=  Return Book    ${reader1}    ${book}
     Log Book Status    ${book}
     Should Not Be True    ${result3}
-    Should Be Equal    ${book.status}    Reserved
+    Should Be Equal  ${book.status}    Reserved
     Should Be Equal    ${book.taken_by}    ${None}
     Should Be Equal    ${book.reserved_by}    ${reader1.name}
     Reset Book Status    ${book}
