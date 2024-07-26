@@ -1,0 +1,45 @@
+LOGIN PAGE
+1. Go to https://thinking-tester-contact-list.herokuapp.com/
+2. Enter email in field: #email
+3. Enter password in field: #password
+4. Click on the button: #submit
+Expected Result: https://thinking-tester-contact-list.herokuapp.com/contactList is opened
+
+CREATE CONTACT
+5. Perform steps 1.-4.
+6. Click on the "Add a New Contact" button: #add-contact
+7. Enter <test_data_first_name> in the "First Name" field: #firstName
+8. Enter <test_data_last_name> in the "Last Name" field: #lastName
+9. Enter <test_data_day_of_birth> in the "Date of Birth" field: #birthdate
+10. Enter <test_data_phone_number> in the "Phone" field: #phone
+11. Enter <test_data_street_one> in the "Street Address 1" field: #street1
+12. Enter <test_data_street_two> in the "Street Address 2" field: #street2
+13. Enter <test_data_city> in the "City" field: #city
+14. Enter <test_data_state> in the "State or Province" field: #stateProvince
+15. Enter <test_data_pc> in the "Postal Code" field: #postalCode
+16. Enter <test_data_country> in the "Country" field: #country
+17. Click on the "Submit" button: #submit
+Expected Result: New contact created
+
+EDIT CONTACT
+18. Perform steps: 1.-4.
+19. Click on the row table: //tr[@class="contactTableBodyRow"][1]
+20. Click on the "Edit Contact" button: #edit-contact
+21. Change data to <new_data_first_name> in the "First Name" field: #firstName
+22. Change data to <new_data_last_name> in the "Last Name" field: #lastName
+23. Change data to <new_data_day_of_birth> in the "Date of Birth" field: #birthdate
+24. Change data to <new_data_phone_number> in the "Phone" field: #phone
+25. Change data to <new_data_street_one> in the "Street Address 1" field: #street1
+26. Change data to <new_data_street_two> in the "Street Address 2" field: #street2
+27. Change data to <new_data_city> in the "City" field: #city
+28. Change data to <new_data_state> in the "State or Province" field: #stateProvince
+29. Change data to <new_data_pc> in the "Postal Code" field: #postalCode
+30. Change data to <new_data_country> in the "Country" field: #country
+31. Click on the "Submit" button: #submit
+
+
+DELETE CONTACT
+32. Perform steps: 1.-4.
+33. Click on the row table: //tr[@class="contactTableBodyRow"][1]
+34. Click on the "Delete Contact" button: #delete
+35. Confirm deletion with press "Enter" on the keyboard
