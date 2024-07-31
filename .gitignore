@@ -17,7 +17,8 @@ venv/
 .idea/
 homework_21/assets/style.css
 
-/log.html
-/output.xml
-/report.html
+assets/
+*.css
+*.html
+*.xml
 /homeworks_python/homework_10.3.py
