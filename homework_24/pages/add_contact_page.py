@@ -61,3 +61,18 @@ class AddContactPage(BasePage):
     def click_submit(self):
         submit_form_button = self.find_element(submit_button)
         submit_form_button.click()
+
+    def complete_add_new_contact(self, first_name, last_name, birthdate,
+                                 phone, street1, street2, city,
+                                 state_province, postal_code, country):
+        self.enter_first_name(first_name)
+        self.enter_last_name(last_name)
+        self.enter_birthdate(birthdate)
+        self.enter_phone(phone)
+        self.enter_street1(street1)
+        self.enter_street2(street2)
+        self.enter_city(city)
+        self.enter_state_province(state_province)
+        self.enter_postal_code(postal_code)
+        self.enter_country(country)
+        self.click_submit()

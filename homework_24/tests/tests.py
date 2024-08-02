@@ -3,11 +3,22 @@ from log_dir.log_setup import logger
 import pytest
 from homework_24.pages.login_page import LoginPage
 from homework_24.pages.contact_list_page import ContactPage
+from homework_24.pages.add_contact_page import AddContactPage
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 email = "hello.world@gmail.com"
 password = "password_password"
+first_name = "John"
+last_name = "Doe"
+birthdate = "01/01/1980"
+phone = "123-456-7890"
+street1 = "123 Main St"
+street2 = "Apt 4B"
+city = "Springfield"
+state_province = "IL"
+postal_code = "62704"
+country = "USA"
 
 @pytest.fixture
 def browser():
@@ -24,15 +35,22 @@ def test_login(browser):
     page_object = LoginPage(browser)
     time.sleep(1)
     page_object.complete_login(email, password)
-    time.sleep(10)
+    time.sleep(5)
 
 
 def test_create_new_contact(browser):
     page_object = LoginPage(browser)
     page_object.complete_login(email, password)
+    time.sleep(1)
     page_object = ContactPage(browser)
     page_object.click_add_contact()
-
+    time.sleep(1)
+    page_object = AddContactPage(browser)
+    page_object.complete_add_new_contact(first_name, last_name,
+                                         birthdate, phone, street1,
+                                         street2, city, state_province,
+                                         postal_code, country)
+    time.sleep(5)
 
 
 
