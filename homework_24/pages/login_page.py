@@ -1,4 +1,5 @@
 from homework_24.pages.base_page import BasePage
+
 from selenium.webdriver.common.by import By
 
 email_field = (By.ID, "email")
@@ -26,4 +27,3 @@ class LoginPage(BasePage):
         self.enter_email(email)
         self.enter_password(password)
         self.click_submit()
-        return

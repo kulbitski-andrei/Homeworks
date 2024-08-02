@@ -2,6 +2,7 @@ import time
 from log_dir.log_setup import logger
 import pytest
 from homework_24.pages.login_page import LoginPage
+from homework_24.pages.contact_list_page import ContactPage
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -21,11 +22,21 @@ def browser():
 @pytest.mark.login
 def test_login(browser):
     page_object = LoginPage(browser)
+    time.sleep(1)
     page_object.complete_login(email, password)
+    time.sleep(10)
 
 
 def test_create_new_contact(browser):
-    pass
+    page_object = LoginPage(browser)
+    time.sleep(1)
+    page_object.complete_login(email, password)
+    time.sleep(1)
+    page_object = ContactPage(browser)
+    time.sleep(1)
+    page_object.click_add_contact()
+    time.sleep(10)
+
 
 
 
