@@ -59,8 +59,15 @@ def test_create_new_contact(browser):
 
 
 def test_edit_contact(browser):
-    pass
-
+    page_object = LoginPage(browser)
+    page_object.complete_login(email, password)
+    time.sleep(1)
+    page_object = ContactListPage(browser)
+    page_object.open_contact()
+    time.sleep(1)
+    page_object = ContactDetailsPage(browser)
+    page_object.click_edit_contact()
+    time.sleep(5)
 
 def test_delete_contact(browser):
     page_object = LoginPage(browser)
