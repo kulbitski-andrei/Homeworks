@@ -1,11 +1,13 @@
 import time
-from log_dir.log_setup import logger
+# from log_dir.log_setup import logger
 import pytest
 from homework_24.pages.login_page import LoginPage
 from homework_24.pages.contact_list_page import ContactListPage
+from homework_24.pages.contact_details_page import ContactDetailsPage
 from homework_24.pages.add_contact_page import AddContactPage
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+
 
 email = "hello.world@gmail.com"
 password = "password_password"
@@ -21,6 +23,7 @@ state_province = "IL"
 postal_code = "62704"
 country = "USA"
 
+
 @pytest.fixture
 def browser():
     chrome_options = Options()
@@ -31,14 +34,15 @@ def browser():
     yield chrome_browser
     chrome_browser.quit()
 
-# @pytest.mark.login
-# def test_login(browser):
-#     page_object = LoginPage(browser)
-#     time.sleep(1)
-#     page_object.complete_login(email, password)
-#     time.sleep(5)
 
+@pytest.mark.login
+def test_login(browser):
+    page_object = LoginPage(browser)
+    time.sleep(1)
+    page_object.complete_login(email, password)
+    time.sleep(5)
 
+@pytest.mark.create_new_contact
 def test_create_new_contact(browser):
     page_object = LoginPage(browser)
     page_object.complete_login(email, password)
@@ -51,7 +55,11 @@ def test_create_new_contact(browser):
                                          birthdate, email_address, phone, street1,
                                          street2, city, state_province,
                                          postal_code, country)
-    time.sleep(20)
+    time.sleep(5)
+
+
+def test_edit_contact(browser):
+    pass
 
 
 def test_delete_contact(browser):
@@ -60,5 +68,10 @@ def test_delete_contact(browser):
     time.sleep(1)
     page_object = ContactListPage(browser)
     page_object.open_contact()
-    page_object = C
-    time.sleep(10)
+    time.sleep(1)
+    page_object = ContactDetailsPage(browser)
+    time.sleep(1)
+    page_object.click_delete_contact()
+    alert = browser.switch_to.alert
+    alert.accept()
+    time.sleep(5)
