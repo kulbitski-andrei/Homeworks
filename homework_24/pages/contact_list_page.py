@@ -15,3 +15,6 @@ class ContactListPage(BasePage):
     def open_contact(self):
         open_contact = self.find_element(contact_row)
         open_contact.click()
+
+    def locate_contact_row(self):
+        return self.find_element(contact_row)
