@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 first_name_field = (By.ID, "firstName")
 last_name_field = (By.ID, "lastName")
 birthdate_field = (By.ID, "birthdate")
+email_address_field = (By.ID, "email")
 phone_field = (By.ID, "phone")
 street1_field = (By.ID, "street1")
 street2_field = (By.ID, "street2")
@@ -29,6 +30,10 @@ class AddContactPage(BasePage):
     def enter_birthdate(self, birthdate):
         birthdate_input = self.find_element(birthdate_field)
         birthdate_input.send_keys(birthdate)
+
+    def enter_email_address(self, email_address):
+        birthdate_input = self.find_element(email_address_field)
+        birthdate_input.send_keys(email_address)
 
     def enter_phone(self, phone):
         phone_input = self.find_element(phone_field)
@@ -63,11 +68,12 @@ class AddContactPage(BasePage):
         submit_form_button.click()
 
     def complete_add_new_contact(self, first_name, last_name, birthdate,
-                                 phone, street1, street2, city,
+                                 email_address, phone, street1, street2, city,
                                  state_province, postal_code, country):
         self.enter_first_name(first_name)
         self.enter_last_name(last_name)
         self.enter_birthdate(birthdate)
+        self.enter_email_address(email_address)
         self.enter_phone(phone)
         self.enter_street1(street1)
         self.enter_street2(street2)
