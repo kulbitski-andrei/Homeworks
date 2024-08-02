@@ -29,13 +29,9 @@ def test_login(browser):
 
 def test_create_new_contact(browser):
     page_object = LoginPage(browser)
-    time.sleep(1)
     page_object.complete_login(email, password)
-    time.sleep(1)
     page_object = ContactPage(browser)
-    time.sleep(1)
     page_object.click_add_contact()
-    time.sleep(10)
 
 
 
