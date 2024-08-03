@@ -92,5 +92,6 @@ def test_delete_contact(browser):
     alert = browser.switch_to.alert
     time.sleep(1)
     alert.accept()
-    time.sleep(1)
+    page_object = ContactListPage(browser)
+    assert page_object.locate_contact_row() is None
     logger.info("TEST 3: Executed")
