@@ -1,5 +1,5 @@
 import time
-from homework_24.log_setup import logger
+from log_dir.log_setup import logger
 import pytest
 from homework_24.pages.login_page import LoginPage
 from homework_24.pages.contact_list_page import ContactListPage

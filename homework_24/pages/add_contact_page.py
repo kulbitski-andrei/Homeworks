@@ -1,5 +1,7 @@
-from homework_24.pages.base_page import BasePage
+"""ADD CONTACT PAGE"""
+
 from selenium.webdriver.common.by import By
+from homework_24.pages.base_page import BasePage
 
 first_name_field = (By.ID, "firstName")
 last_name_field = (By.ID, "lastName")
@@ -64,12 +66,14 @@ class AddContactPage(BasePage):
         country_input.send_keys(country)
 
     def click_submit(self):
+        """Click on submit button"""
         submit_form_button = self.find_element(submit_button)
         submit_form_button.click()
 
     def complete_add_new_contact(self, first_name, last_name, birthdate,
                                  email_address, phone, street1, street2, city,
                                  state_province, postal_code, country):
+        """Complete add new contact"""
         self.enter_first_name(first_name)
         self.enter_last_name(last_name)
         self.enter_birthdate(birthdate)
