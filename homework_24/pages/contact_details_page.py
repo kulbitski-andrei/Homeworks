@@ -1,7 +1,7 @@
 """CONTACT DETAILS PAGE"""
 
-from homework_24.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+from homework_24.pages.base_page import BasePage
 
 edit_button = (By.ID, "edit-contact")
 delete_button = (By.ID, "delete")
@@ -20,6 +20,7 @@ country_field = (By.ID, "country")
 
 
 class ContactDetailsPage(BasePage):
+    """Contact Details Page class"""
     def __init__(self, driver):
         """
         Initialize the ContactDetailsPage with a web driver.

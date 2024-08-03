@@ -1,13 +1,14 @@
 """CONTACT LIST PAGE"""
 
-from homework_24.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+from homework_24.pages.base_page import BasePage
 
 add_contact_button = (By.ID, "add-contact")
 contact_row = (By.XPATH, "//tr[@class=\"contactTableBodyRow\"][1]")
 
 
 class ContactListPage(BasePage):
+    """Contact List Page class"""
     def __init__(self, driver):
         """
         Initialize the ContactListPage with a web driver.

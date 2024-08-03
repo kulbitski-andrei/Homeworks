@@ -1,7 +1,7 @@
 """LOGIN PAGE"""
 
-from homework_24.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+from homework_24.pages.base_page import BasePage
 
 email_field = (By.ID, "email")
 password_field = (By.ID, "password")
@@ -9,6 +9,7 @@ submit_button = (By.ID, "submit")
 
 
 class LoginPage(BasePage):
+    """Login Page class"""
     def __init__(self, driver):
         """
         Initialize the LoginPage with a web driver.

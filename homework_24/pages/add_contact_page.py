@@ -18,6 +18,7 @@ submit_button = (By.ID, "submit")
 
 
 class AddContactPage(BasePage):
+    """Add Contact Page class"""
     def __init__(self, driver):
         """
         Initialize the AddContactPage with a web driver.

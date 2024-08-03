@@ -2,6 +2,7 @@
 
 
 class BasePage:
+    """Base Page class"""
     def __init__(self, driver):
         """
         Initialize the BasePage with a web driver.

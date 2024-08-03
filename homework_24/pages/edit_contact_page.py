@@ -1,7 +1,7 @@
 """EDIT CONTACT PAGE"""
 
-from homework_24.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+from homework_24.pages.base_page import BasePage
 
 first_name_field = (By.ID, "firstName")
 last_name_field = (By.ID, "lastName")
@@ -18,6 +18,7 @@ submit_button = (By.ID, "submit")
 
 
 class EditContactPage(BasePage):
+    """Edit Contact Page class"""
     def __init__(self, driver):
         """
         Initialize the EditContactPage with a web driver.
