@@ -124,7 +124,8 @@ class EditContactPage(BasePage):
                               email_address, phone, street1, street2, city,
                               state_province, postal_code, country):
         """
-        Complete the process of editing a contact by filling out the form and submitting it.
+        Complete the process of editing a contact
+        by filling out the form and submitting it.
         """
         self.edit_first_name(first_name)
         self.edit_last_name(last_name)

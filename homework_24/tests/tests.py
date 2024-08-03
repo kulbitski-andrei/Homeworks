@@ -44,8 +44,9 @@ def test_create_new_contact(browser):
 
     page_object.complete_add_new_contact(const.FIRST_NAME, const.LAST_NAME,
                                          const.BIRTHDATE, const.EMAIL_ADDRESS,
-                                         const.PHONE, const.STREET1, const.STREET2,
-                                         const.CITY, const.STATE_PROVINCE,
+                                         const.PHONE, const.STREET1,
+                                         const.STREET2, const.CITY,
+                                         const.STATE_PROVINCE,
                                          const.POSTAL_CODE, const.COUNTRY)
     page_object = ContactListPage(browser)
     assert page_object.locate_contact_row() is not None
@@ -68,11 +69,17 @@ def test_edit_contact(browser):
     page_object.click_edit_contact()
     time.sleep(1)
     page_object = EditContactPage(browser)
-    page_object.complete_edit_contact(const.EDIT_FIRST_NAME, const.EDIT_LAST_NAME,
-                                      const.EDIT_BIRTHDATE, const.EDIT_EMAIL_ADDRESS,
-                                      const.EDIT_PHONE, const.EDIT_STREET1, const.EDIT_STREET2,
-                                      const.EDIT_CITY, const.EDIT_STATE_PROVINCE,
-                                      const.EDIT_POSTAL_CODE, const.EDIT_COUNTRY)
+    page_object.complete_edit_contact(const.EDIT_FIRST_NAME,
+                                      const.EDIT_LAST_NAME,
+                                      const.EDIT_BIRTHDATE,
+                                      const.EDIT_EMAIL_ADDRESS,
+                                      const.EDIT_PHONE,
+                                      const.EDIT_STREET1,
+                                      const.EDIT_STREET2,
+                                      const.EDIT_CITY,
+                                      const.EDIT_STATE_PROVINCE,
+                                      const.EDIT_POSTAL_CODE,
+                                      const.EDIT_COUNTRY)
     page_object = ContactDetailsPage(browser)
     time.sleep(1)  # This one is really needed!
     assert page_object.locate_first_name().text == "RICARDO"

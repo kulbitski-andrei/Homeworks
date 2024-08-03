@@ -113,7 +113,8 @@ class AddContactPage(BasePage):
                                  email_address, phone, street1, street2,
                                  city, state_province, postal_code, country):
         """
-        Complete the process of adding a new contact by filling out the form and submitting it.
+        Complete the process of adding a new contact
+        by filling out the form and submitting it.
         """
         self.enter_first_name(first_name)
         self.enter_last_name(last_name)

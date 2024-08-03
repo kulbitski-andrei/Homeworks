@@ -39,7 +39,8 @@ class LoginPage(BasePage):
 
     def complete_login(self, email, password):
         """
-        Complete the login process by entering the email and password and submitting the form.
+        Complete the login process by entering the email
+        and password and submitting the form.
         """
         self.enter_email(email)
         self.enter_password(password)
