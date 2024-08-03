@@ -42,9 +42,11 @@ def test_create_new_contact(browser):
     time.sleep(1)
     page_object = AddContactPage(browser)
 
-    page_object.complete_add_new_contact(const.FIRST_NAME, const.LAST_NAME, const.BIRTHDATE,
-                                         const.EMAIL_ADDRESS, const.PHONE, const.STREET1, const.STREET2,
-                                         const.CITY, const.STATE_PROVINCE, const.POSTAL_CODE, const.COUNTRY)
+    page_object.complete_add_new_contact(const.FIRST_NAME, const.LAST_NAME,
+                                         const.BIRTHDATE, const.EMAIL_ADDRESS,
+                                         const.PHONE, const.STREET1, const.STREET2,
+                                         const.CITY, const.STATE_PROVINCE,
+                                         const.POSTAL_CODE, const.COUNTRY)
     page_object = ContactListPage(browser)
     assert page_object.locate_contact_row() is not None
     logger.info("TEST 1: Executed")
