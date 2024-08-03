@@ -93,7 +93,6 @@ def test_edit_contact(browser):
     assert page_object.locate_state_province().text == "HAMPSHIRE"
     assert page_object.locate_postal_code().text == "200205"
     assert page_object.locate_country().text == "FRANCE"
-    time.sleep(5)
     logger.info("TEST 2: Executed")
 
 
@@ -110,11 +109,10 @@ def test_delete_contact(browser):
     page_object.open_contact()
     time.sleep(1)
     page_object = ContactDetailsPage(browser)
-    time.sleep(1)
     page_object.click_delete_contact()
     alert = browser.switch_to.alert
     time.sleep(1)
     alert.accept()
     page_object = ContactListPage(browser)
-    # assert page_object.locate_contact_row() is None
+    assert page_object.locate_contact_row() is None
     logger.info("TEST 3: Executed")
