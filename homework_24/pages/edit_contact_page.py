@@ -1,3 +1,4 @@
+import time
 from homework_24.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 
@@ -14,6 +15,7 @@ postal_code_field = (By.ID, "postalCode")
 country_field = (By.ID, "country")
 submit_button = (By.ID, "submit")
 
+
 class EditContactPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
@@ -25,42 +27,52 @@ class EditContactPage(BasePage):
 
     def edit_last_name(self, last_name):
         last_name_input = self.find_element(last_name_field)
+        last_name_input.clear()
         last_name_input.send_keys(last_name)
 
     def edit_birthdate(self, birthdate):
         birthdate_input = self.find_element(birthdate_field)
+        birthdate_input.clear()
         birthdate_input.send_keys(birthdate)
 
     def edit_email_address(self, email_address):
-        birthdate_input = self.find_element(email_address_field)
-        birthdate_input.send_keys(email_address)
+        email_address_input = self.find_element(email_address_field)
+        email_address_input.clear()
+        email_address_input.send_keys(email_address)
 
     def edit_phone(self, phone):
         phone_input = self.find_element(phone_field)
+        phone_input.clear()
         phone_input.send_keys(phone)
 
     def edit_street1(self, street1):
         street1_input = self.find_element(street1_field)
+        street1_input.clear()
         street1_input.send_keys(street1)
 
     def edit_street2(self, street2):
         street2_input = self.find_element(street2_field)
+        street2_input.clear()
         street2_input.send_keys(street2)
 
     def edit_city(self, city):
         city_input = self.find_element(city_field)
+        city_input.clear()
         city_input.send_keys(city)
 
     def edit_state_province(self, state_province):
         state_province_input = self.find_element(state_province_field)
+        state_province_input.clear()
         state_province_input.send_keys(state_province)
 
     def edit_postal_code(self, postal_code):
         postal_code_input = self.find_element(postal_code_field)
+        postal_code_input.clear()
         postal_code_input.send_keys(postal_code)
 
     def edit_country(self, country):
         country_input = self.find_element(country_field)
+        country_input.clear()
         country_input.send_keys(country)
 
     def click_submit(self):
@@ -68,8 +80,8 @@ class EditContactPage(BasePage):
         submit_form_button.click()
 
     def complete_edit_contact(self, first_name, last_name, birthdate,
-                                 email_address, phone, street1, street2, city,
-                                 state_province, postal_code, country):
+                              email_address, phone, street1, street2, city,
+                              state_province, postal_code, country):
         self.edit_first_name(first_name)
         self.edit_last_name(last_name)
         self.edit_birthdate(birthdate)
