@@ -108,7 +108,9 @@ class AddContactPage(BasePage):
         submit_form_button = self.find_element(submit_button)
         submit_form_button.click()
 
-    def complete_add_new_contact(self, first_name, last_name, birthdate, email_address, phone, street1, street2, city, state_province, postal_code, country):
+    def complete_add_new_contact(self, first_name, last_name, birthdate,
+                                 email_address, phone, street1, street2,
+                                 city, state_province, postal_code, country):
         """
         Complete the process of adding a new contact by filling out the form and submitting it.
         """
