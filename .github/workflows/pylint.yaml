@@ -20,6 +20,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pylint
           pip install pytest
+          pip install selenium
       - name: Set PYTHONPATH
         run: |
           echo "PYTHONPATH=$(pwd)/modules_for_testing:$(pwd)/log_dir" >> $GITHUB_ENV
