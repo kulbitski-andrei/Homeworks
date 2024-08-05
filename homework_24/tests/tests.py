@@ -2,30 +2,14 @@
 
 import time
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from homework_24.pages.login_page import LoginPage
 from homework_24.pages.contact_list_page import ContactListPage
 from homework_24.pages.contact_details_page import ContactDetailsPage
 from homework_24.pages.edit_contact_page import EditContactPage
 from homework_24.pages.add_contact_page import AddContactPage
+from homework_24.conftest import browser
 import homework_24.test_data.constants as const
 from log_dir.log_setup import logger
-
-
-@pytest.fixture
-def browser():
-    """
-    Fixture to set up and tear down the browser instance for each test.
-    """
-    logger.info("Setting up browser ...")
-    chrome_options = Options()
-    chrome_options.add_argument("--disable-search-engine-choice-screen")
-    chrome_browser = webdriver.Chrome(options=chrome_options)
-    chrome_browser.implicitly_wait(5)
-    chrome_browser.get(const.URL)
-    yield chrome_browser
-    chrome_browser.quit()
 
 
 @pytest.mark.create_new_contact
@@ -64,6 +48,7 @@ def test_edit_contact(browser):
     page_object = ContactDetailsPage(browser)
     page_object.click_edit_contact()
     page_object = EditContactPage(browser)
+    time.sleep(1)  # This one is really needed!
     page_object.complete_edit_contact(const.EDIT_FIRST_NAME,
                                       const.EDIT_LAST_NAME,
                                       const.EDIT_BIRTHDATE,
