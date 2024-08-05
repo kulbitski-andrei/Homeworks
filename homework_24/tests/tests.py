@@ -36,10 +36,8 @@ def test_create_new_contact(browser):
     logger.info("TEST 1: CREATE NEW CONTACT. Executing...")
     page_object = LoginPage(browser)
     page_object.complete_login(const.EMAIL, const.PASSWORD)
-    time.sleep(1)
     page_object = ContactListPage(browser)
     page_object.click_add_contact()
-    time.sleep(1)
     page_object = AddContactPage(browser)
 
     page_object.complete_add_new_contact(const.FIRST_NAME, const.LAST_NAME,
@@ -61,13 +59,10 @@ def test_edit_contact(browser):
     logger.info("TEST 2: EDIT CONTACT. Executing...")
     page_object = LoginPage(browser)
     page_object.complete_login(const.EMAIL, const.PASSWORD)
-    time.sleep(1)
     page_object = ContactListPage(browser)
     page_object.open_contact()
-    time.sleep(1)
     page_object = ContactDetailsPage(browser)
     page_object.click_edit_contact()
-    time.sleep(1)
     page_object = EditContactPage(browser)
     page_object.complete_edit_contact(const.EDIT_FIRST_NAME,
                                       const.EDIT_LAST_NAME,
@@ -104,14 +99,11 @@ def test_delete_contact(browser):
     logger.info("TEST 3: DELETE CONTACT. Executing...")
     page_object = LoginPage(browser)
     page_object.complete_login(const.EMAIL, const.PASSWORD)
-    time.sleep(1)
     page_object = ContactListPage(browser)
     page_object.open_contact()
-    time.sleep(1)
     page_object = ContactDetailsPage(browser)
     page_object.click_delete_contact()
     alert = browser.switch_to.alert
-    time.sleep(1)
     alert.accept()
     page_object = ContactListPage(browser)
     assert page_object.locate_contact_row() is None
