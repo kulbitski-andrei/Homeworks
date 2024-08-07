@@ -20,12 +20,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install pylint
           pip install pytest
+          pip install selenium
       - name: Set PYTHONPATH
         run: |
           echo "PYTHONPATH=$(pwd)/modules_for_testing:$(pwd)/log_dir" >> $GITHUB_ENV
       - name: Analysing the code with pylint
         run: |
-          pylint $(git ls-files '*.py') --disable=invalid-name,too-few-public-methods,eval-used,no-member,duplicate-code,redefined-outer-name,unused-argument,unused-variable
+          pylint $(git ls-files '*.py') --disable=invalid-name,too-few-public-methods,no-member,duplicate-code,redefined-outer-name,useless-parent-delegation,too-many-arguments,redefined-outer-name,duplicate-code,ungrouped-imports,unused-argument,unused-variable
+
         env:
           PYTHONPATH: ${{ env.PYTHONPATH }}
           
