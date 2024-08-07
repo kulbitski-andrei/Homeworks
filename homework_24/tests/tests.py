@@ -7,7 +7,6 @@ from homework_24.pages.contact_list_page import ContactListPage
 from homework_24.pages.contact_details_page import ContactDetailsPage
 from homework_24.pages.edit_contact_page import EditContactPage
 from homework_24.pages.add_contact_page import AddContactPage
-from homework_24.conftest import browser
 import homework_24.test_data.constants as const
 from log_dir.log_setup import logger
 
