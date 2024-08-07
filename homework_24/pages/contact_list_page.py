@@ -5,6 +5,7 @@ from homework_24.pages.base_page import BasePage
 
 add_contact_button = (By.ID, "add-contact")
 contact_row = (By.XPATH, "//tr[@class=\"contactTableBodyRow\"][1]")
+contact_row_list = (By.XPATH, "//tr[@class=\"contactTableBodyRow\"]")
 
 
 class ContactListPage(BasePage):
@@ -33,4 +34,11 @@ class ContactListPage(BasePage):
         """
         Locate the first contact row in the contact list.
         """
-        return self.find_element(contact_row)
+        return self.find_elements(*contact_row)
+
+    def locate_contact_rows(self):
+        """
+        Locate multiple contact rows.
+        """
+        list_of_rows = self.find_elements(*contact_row_list)
+        return list_of_rows
