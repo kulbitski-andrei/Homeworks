@@ -16,19 +16,12 @@ class LoginPage(BasePage):
         """
         super().__init__(driver)
 
-    def enter_email(self, email):
+    def enter_text(self, text, field):
         """
-        Enter the email address into the email field.
+        Enter the text into the field.
         """
-        email_input = self.find_element(email_field)
-        email_input.send_keys(email)
-
-    def enter_password(self, password):
-        """
-        Enter the password into the password field.
-        """
-        password_input = self.find_element(password_field)
-        password_input.send_keys(password)
+        input_var = self.find_element(field)
+        input_var.send_keys(text)
 
     def click_submit(self):
         """
@@ -42,6 +35,6 @@ class LoginPage(BasePage):
         Complete the login process by entering the email
         and password and submitting the form.
         """
-        self.enter_email(email)
-        self.enter_password(password)
+        self.enter_text(email, email_field)
+        self.enter_text(password, password_field)
         self.click_submit()
