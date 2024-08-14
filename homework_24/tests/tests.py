@@ -23,11 +23,11 @@ def test_create_new_contact(browser):
     current_page.click_add_contact()
     current_page = AddContactPage(browser)
     current_page.complete_add_new_contact(const.FIRST_NAME, const.LAST_NAME,
-                                         const.BIRTHDATE, const.EMAIL_ADDRESS,
-                                         const.PHONE, const.STREET1,
-                                         const.STREET2, const.CITY,
-                                         const.STATE_PROVINCE,
-                                         const.POSTAL_CODE, const.COUNTRY)
+                                          const.BIRTHDATE, const.EMAIL_ADDRESS,
+                                          const.PHONE, const.STREET1,
+                                          const.STREET2, const.CITY,
+                                          const.STATE_PROVINCE,
+                                          const.POSTAL_CODE, const.COUNTRY)
     current_page = ContactListPage(browser)
     assert current_page.locate_contact_row() is not None
     logger.info("TEST 1: Executed")
@@ -48,16 +48,16 @@ def test_edit_contact(browser):
     current_page = EditContactPage(browser)
     time.sleep(1)  # This one is really needed!
     current_page.complete_edit_contact(const.EDIT_FIRST_NAME,
-                                      const.EDIT_LAST_NAME,
-                                      const.EDIT_BIRTHDATE,
-                                      const.EDIT_EMAIL_ADDRESS,
-                                      const.EDIT_PHONE,
-                                      const.EDIT_STREET1,
-                                      const.EDIT_STREET2,
-                                      const.EDIT_CITY,
-                                      const.EDIT_STATE_PROVINCE,
-                                      const.EDIT_POSTAL_CODE,
-                                      const.EDIT_COUNTRY)
+                                       const.EDIT_LAST_NAME,
+                                       const.EDIT_BIRTHDATE,
+                                       const.EDIT_EMAIL_ADDRESS,
+                                       const.EDIT_PHONE,
+                                       const.EDIT_STREET1,
+                                       const.EDIT_STREET2,
+                                       const.EDIT_CITY,
+                                       const.EDIT_STATE_PROVINCE,
+                                       const.EDIT_POSTAL_CODE,
+                                       const.EDIT_COUNTRY)
     current_page = ContactDetailsPage(browser)
     time.sleep(1)  # This one is really needed!
     assert current_page.locate_first_name().text == "RICARDO"
