@@ -23,7 +23,7 @@ def generate_random_email():
 
 def create_user():
     endpoint = f"{url}/functions/createUser"
-    print(endpoint)
+    print("create_user")
 
     headers = {
         "Authorization": f"Bearer {token}",
@@ -50,13 +50,12 @@ def create_user():
     print("id is:", id_value)
 
 
-def get_user_info(user_id):
+def get_user(user_id):
     endpoint = f"{url}/functions/getUser/{user_id}"
-    print(endpoint)
+    print("get_user")
 
     headers = {
         "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json"
     }
 
     response = requests.get(endpoint, headers=headers)
@@ -66,7 +65,7 @@ def get_user_info(user_id):
 
 def update_user(user_id):
     endpoint = f"{url}/functions/updateUser/{user_id}"
-    print(endpoint)
+    print("update_user")
 
     headers = {
         "Authorization": f"Bearer {token}",
@@ -88,10 +87,56 @@ def update_user(user_id):
     print(response.text)
 
 
+def delete_user(user_id):
+    endpoint = f"{url}/functions/deleteUser/{user_id}"
+    print("delete_user")
+
+    headers = {
+        "Authorization": f"Bearer {token}",
+    }
+
+    response = requests.delete(endpoint, headers=headers)
+    print(response)
+    print(response.text)
+
+
+def check_status(user_id):
+    endpoint = f"{url}/functions/checkUserStatus/{user_id}"
+    print("check_status")
+
+    headers = {
+        "Authorization": f"Bearer {token}",
+    }
+
+    response = requests.get(endpoint, headers=headers)
+    print(response)
+    print(response.text)
+
+
+def get_users():
+    endpoint = f"{url}/functions/getUsers"
+    print("get_users")
+
+    headers = {
+        "Authorization": f"Bearer {token}",
+    }
+
+    response = requests.get(endpoint, headers=headers)
+    print(response)
+    print(response.text)
+
+
 create_user()
 print()
-get_user_info(id_value)
+get_user(id_value)
 print()
 update_user(id_value)
 print()
-get_user_info(id_value)
+get_user(id_value)
+print()
+check_status(id_value)
+print()
+get_users()
+print()
+delete_user(id_value)
+print()
