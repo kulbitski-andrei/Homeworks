@@ -1,9 +1,12 @@
+import pytest
 import requests
 from homework_27.test_data import variables
 from homework_27.service_methods import service_methods
 
 
+@pytest.mark.positive
 def test_create_user():
+    test_email = service_methods.generate_random_email()
     endpoint = f"{variables.url}/functions/createUser"
     print("create_user")
 
@@ -14,7 +17,7 @@ def test_create_user():
 
     data = {
         "name": "John Doe",
-        "email": service_methods.generate_random_email(),
+        "email": test_email,
         "age": 30,
         "phoneNumber": "+12345678901",
         "address": "123 Main St",
@@ -25,14 +28,21 @@ def test_create_user():
     response = requests.post(endpoint, headers=headers, json=data)
     print(response)
     print(response.text)
-    a = response.json()
-    print(a)
-    variables.id_value = a.get("id")
-    print("id is:", variables.id_value)
+    print("id is:", response.json().get("id"))
+    assert response.status_code == 200
+    assert response.json().get("name") == "John Doe"
+    assert response.json().get("email") == test_email
+    assert response.json().get("age") == 30
+    assert response.json().get("phoneNumber") == "+12345678901"
+    assert response.json().get("address") == "123 Main St"
+    assert response.json().get("role") == "user"
+    assert response.json().get("referralCode") == "ABCDEFGH"
+    assert response.json().get("status") == "created"
 
 
-def test_get_user(user_id):
-    endpoint = f"{variables.url}/functions/getUser/{user_id}"
+@pytest.mark.positive
+def test_get_user():
+    endpoint = f"{variables.url}/functions/getUser/{variables.id_value}"
     print("get_user")
 
     headers = {
@@ -42,6 +52,8 @@ def test_get_user(user_id):
     response = requests.get(endpoint, headers=headers)
     print(response)
     print(response.text)
+    assert response.status_code == 200
+    assert response.text == '{"error":"Invalid User ID format"}'
 
 
 def test_update_user(user_id):
@@ -105,19 +117,3 @@ def test_get_users():
     response = requests.get(endpoint, headers=headers)
     print(response)
     print(response.text)
-
-
-test_create_user()
-print()
-test_get_user(variables.id_value)
-print()
-test_update_user(variables.id_value)
-print()
-test_get_user(variables.id_value)
-print()
-test_check_status(variables.id_value)
-print()
-test_get_users()
-print()
-test_delete_user(variables.id_value)
-print()

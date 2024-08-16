@@ -27,10 +27,49 @@ def test_create_user_email_already_exists():
     print(response)
     print(response.text)
     assert response.status_code == 200
-    # assert response.text == "<Response [200]>"
     response = requests.post(endpoint, headers=headers, json=data)
     print(response)
     print(response.text)
     assert response.status_code == 409
-    # assert response.text == "<Response [409]>"
+    assert response.text == '{"error":"User with this email already exists"}'
 
+
+def test_create_user_with_empty_data():
+    endpoint = f"{variables.url}/functions/createUser"
+    print("create_user")
+
+    headers = {
+        "Authorization": f"Bearer {variables.token}",
+        "Content-Type": "application/json"
+    }
+
+    data = {
+        "name": "",
+        "email": "",
+        "age": None,
+        "phoneNumber": "",
+        "address": "",
+        "role": "",
+        "referralCode": ""
+    }
+
+    response = requests.post(endpoint, headers=headers, json=data)
+    print(response)
+    print(response.text)
+    assert response.status_code == 400
+    assert response.text == '{"error":"Invalid name: it must be a string with at least 3 characters"}'
+
+
+def test_delete_unexisting_user():
+    endpoint = f"{variables.url}/functions/deleteUser/0123456789"
+    print("delete_user")
+
+    headers = {
+        "Authorization": f"Bearer {variables.token}",
+    }
+
+    response = requests.delete(endpoint, headers=headers)
+    print(response)
+    print(response.text)
+    assert response.status_code == 400
+    assert response.text == '{"error":"Invalid Order ID format"}'
