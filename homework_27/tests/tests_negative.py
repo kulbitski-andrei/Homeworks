@@ -32,9 +32,9 @@ def test_create_user_email_already_exists():
         "referralCode": "ABCDEFGH"
     }
 
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.post(url, headers=headers, json=data, timeout=10)
     assert response.status_code == 200
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.post(url, headers=headers, json=data, timeout=10)
     assert response.status_code == 409
     assert response.text == '{"error":"User with this email already exists"}'
 
@@ -48,7 +48,7 @@ def test_create_user_with_empty_data():
     and an appropriate error message indicating the invalid input.
     """
     url = f"{variables.url}/functions/createUser"
-    print("Create user. 400 expected")
+    logger.info("Create user. 400 expected")
 
     headers = variables.headers
 
@@ -62,9 +62,10 @@ def test_create_user_with_empty_data():
         "referralCode": ""
     }
 
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.post(url, headers=headers, json=data, timeout=10)
     assert response.status_code == 400
-    assert response.text == '{"error":"Invalid name: it must be a string with at least 3 characters"}'
+    assert response.text == ('{"error":"Invalid name: it must be a string '
+                             'with at least 3 characters"}')
 
 
 def test_delete_unexisting_user():
@@ -76,10 +77,10 @@ def test_delete_unexisting_user():
     and an appropriate error message indicating the invalid ID format.
     """
     url = f"{variables.url}/functions/deleteUser/0123456789"
-    print("Delete user. 400 expected")
+    logger.info("Delete user. 400 expected")
 
     headers = variables.headers
 
-    response = requests.delete(url, headers=headers)
+    response = requests.delete(url, headers=headers, timeout=10)
     assert response.status_code == 400
     assert response.text == '{"error":"Invalid Order ID format"}'

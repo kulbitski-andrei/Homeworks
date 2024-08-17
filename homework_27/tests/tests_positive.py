@@ -31,8 +31,9 @@ def test_create_user():
         "referralCode": "ABCDEFGH"
     }
 
-    expected_keys = {"id", "name", "email", "age", "phoneNumber", "address", "role", "referralCode", "status"}
-    response = requests.post(url, headers=headers, json=data)
+    expected_keys = {"id", "name", "email", "age", "phoneNumber", "address",
+                     "role", "referralCode", "status"}
+    response = requests.post(url, headers=headers, json=data, timeout=10)
     assert response.status_code == 200
     assert set(response.json().keys()) == expected_keys
     assert response.json().get("name") == data["name"]
@@ -59,9 +60,9 @@ def test_get_user(pre_create_user):
 
     headers = variables.headers
 
-    response = requests.get(url, headers=headers)
-    expected_keys = {
-        "id", "name", "email", "age", "phoneNumber", "address", "role", "referralCode", "createdAt", "createdBy"}
+    response = requests.get(url, headers=headers, timeout=10)
+    expected_keys = {"id", "name", "email", "age", "phoneNumber", "address",
+                     "role", "referralCode", "createdAt", "createdBy"}
     assert response.status_code == 200
     assert set(response.json().keys()) == expected_keys
     assert response.json().get("id") == variables.id_value
@@ -90,8 +91,9 @@ def test_update_user(pre_create_user):
         "referralCode": "777"
     }
 
-    expected_keys = {"id", "name", "email", "age", "phoneNumber", "address", "role", "referralCode", "status"}
-    response = requests.put(url, headers=headers, json=data)
+    expected_keys = {"id", "name", "email", "age", "phoneNumber",
+                     "address", "role", "referralCode", "status"}
+    response = requests.put(url, headers=headers, json=data, timeout=10)
     assert response.status_code == 200
     assert set(response.json().keys()) == expected_keys
     assert response.json().get("name") == data["name"]
@@ -117,7 +119,7 @@ def test_check_status(pre_create_user):
 
     headers = variables.headers
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=10)
     expected_keys = {"id", "name", "email", "createdAt", "createdBy", "status"}
     assert response.status_code == 200
     assert set(response.json().keys()) == expected_keys
@@ -136,7 +138,7 @@ def test_get_users():
 
     headers = variables.headers
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=10)
     expected_keys = {"users", "totalPages"}
     assert response.status_code == 200
     assert set(response.json().keys()) == expected_keys
