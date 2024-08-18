@@ -1,5 +1,7 @@
-from flask import Flask, render_template
+"""APP.PY"""
+
 import random
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -13,6 +15,9 @@ images = [
 
 @app.route('/')
 def index():
+    """
+    Creates a render template with random cat gif
+    """
     url = random.choice(images)
     return render_template('index.html', url=url)
 
