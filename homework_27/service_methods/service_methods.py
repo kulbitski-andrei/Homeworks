@@ -2,6 +2,16 @@
 
 import string
 import random
+import json
+from log_dir.log_setup import logger
+
+
+def get_token():
+    with open("../test_data/config.json") as config_file:
+        config = json.load(config_file)
+        token = config["api_token"]
+        logger.info(f"[Service methods] - TOKEN IS {token}")
+        return token
 
 
 def generate_random_email():
@@ -20,3 +30,7 @@ def generate_random_email():
     email = random_char + "@gmail.com"
     print(email)
     return email
+
+
+a = get_token()
+print(a)
