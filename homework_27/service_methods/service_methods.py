@@ -6,7 +6,13 @@ import json
 
 
 def get_token():
-    with open("../test_data/config.json") as config_file:
+    """
+    Retrieves the API token from the configuration file.
+
+    This function reads the 'config.json' file located in the
+    '../test_data/' directory, extracts the 'api_token' value, and returns it.
+    """
+    with open("../test_data/config.json", encoding="utf-8") as config_file:
         config = json.load(config_file)
         token = config["api_token"]
         return token
@@ -24,7 +30,8 @@ def generate_random_email():
         str: A randomly generated email address.
     """
 
-    random_char = ''.join(random.choice(string.ascii_letters) for _ in range(10))
+    random_char = ''.join(random.choice(string.ascii_letters)
+                          for _ in range(10))
     email = random_char + "@gmail.com"
     print(email)
     return email
