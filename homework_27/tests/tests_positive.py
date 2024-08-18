@@ -21,8 +21,6 @@ def test_create_user():
 
     headers = variables.headers
 
-    logger.info(f"{variables.headers}")
-
     data = {
         "name": "John Doe",
         "email": test_email,
