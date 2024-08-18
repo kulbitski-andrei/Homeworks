@@ -15,9 +15,8 @@ def generate_random_email():
     Returns:
         str: A randomly generated email address.
     """
-    domains = ["example.com", "mail.com", "test.com"]
-    letters = string.ascii_lowercase
-    username = ''.join(random.choice(letters) for _ in range(10))
-    domain = random.choice(domains)
-    email = f"{username}@{domain}"
+
+    random_char = ''.join(random.choice(string.ascii_letters) for _ in range(10))
+    email = random_char + "@gmail.com"
+    print(email)
     return email
